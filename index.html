@@ -24,7 +24,6 @@
             overflow-x: hidden;
             position: relative;
         }
-        /* Efek Hujan Hati / Salju */
         .heart-drop {
             position: fixed;
             top: -10%;
@@ -87,7 +86,6 @@
             line-height: 1.6;
             margin: 0;
         }
-        /* Tema Warna Khusus per Seksi */
         .cinema { border-left: 5px solid var(--accent-pink); }
         .night { border-left: 5px solid #4a90e2; }
         .mirror { border-left: 5px solid #f5a623; }
@@ -123,7 +121,6 @@
 </head>
 <body>
 
-    <!-- Musik Latar Otomatis (Menggunakan Audio Plesetan Estetik / Piano Bebas Hak Cipta) -->
     <div class="container">
         <h1>Special Delivery for My Favorite Person 💌</h1>
         <p class="subtitle">Dari Agus Saputra khusus buat kamu yang paling cantik ✨</p>
@@ -138,19 +135,19 @@
 
         <!-- SEKSI 1: Kencan Nonton Bioskop -->
         <div class="card cinema">
-            <img src="image_fcfbc4.jpg" alt="Cinema Date">
+            <img src="image_fcfbc4.jpg.jpeg" alt="Cinema Date">
             <p><strong>Cinema Date Chronicles 🎬</strong><br>Inget gak waktu kita nonton ini? Salah satu momen favorit aku karena bisa duduk manis di sebelah kamu seharian.</p>
         </div>
 
         <!-- SEKSI 2: Jalan-jalan Malam -->
         <div class="card night">
-            <img src="image_fcfbbd.jpg" alt="Night Out">
+            <img src="image_fcfbbd.jpg.jpeg" alt="Night Out">
             <p><strong>Our Romantic Night-Out 🌙</strong><br>Mau sedalam apa pun malamnya, dunia terasa terang benderang tiap kali aku bareng kamu.</p>
         </div>
 
         <!-- SEKSI 3: Mirror Selfie -->
         <div class="card mirror">
-            <img src="image_fcfbc0.jpg" alt="Mirror Selfie">
+            <img src="image_fcfbc0.jpg.jpeg" alt="Mirror Selfie">
             <p><strong>The Mirror Selfie 📸</strong><br>Gemes banget tiap liat foto ini. Biarpun kamunya malu-malu tutup muka, di mata aku kamu tetep yang paling mempesona!</p>
         </div>
 
@@ -158,48 +155,40 @@
         <div class="grid-container">
             <div class="grid-title"><strong>Koleksi Muka Cemberut Ter-Gemas Kamu 🥰</strong></div>
             <div class="grid-card">
-                <img src="image_fcfbdc.jpg" alt="Pose 1">
+                <img src="image_fcfbdc.jpg.jpeg" alt="Pose 1">
             </div>
             <div class="grid-card">
-                <img src="image_fcfbfb.jpg" alt="Pose 2">
+                <img src="image_fcfbfb.jpg.jpeg" alt="Pose 2">
             </div>
             <div class="grid-card">
-                <img src="image_fcfbfe.jpg" alt="Pose 3">
+                <img src="image_fcfbfe.jpg.jpeg" alt="Pose 3">
             </div>
             <div class="grid-card">
-                <img src="image_fcfc1b.jpg" alt="Pose 4">
+                <img src="image_fcfc1b.jpg.jpeg" alt="Pose 4">
             </div>
             <p style="grid-column: span 2; font-size: 1rem; color: #aaa; margin: 5px 0 0 0;">Heran deh, mau pose cemberut atau pasang muka gimana juga herannya kok gak bosenin dan tetep lucu terus!</p>
         </div>
 
         <!-- SEKSI 5: Foto Masa Depan (Penutup) -->
         <div class="card footer-card">
-            <img src="image_fcfc77.jpg" alt="Future Dream">
+            <img src="image_fcfc77.jpg.jpeg" alt="Future Dream">
             <p style="font-size: 1.2rem; color: var(--accent-pink);"><strong>Impian Masa Depan Kita 🌸</strong></p>
             <p style="margin-top: 10px;">Kayak dua anak kecil lucu yang bawa bunga ini, aku harap kita bisa terus gandengan tangan, melewati hari dengan tawa, dan tumbuh bersama sampai tua nanti. *I Love You So Much!* ❤️</p>
         </div>
     </div>
 
-    <!-- Script Animasi Hujan Hati Otomatis -->
     <script>
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart-drop');
-            
-            // Randomize antara hati merah, pink, atau putih
             const hearts = ['❤️', '💖', '🌸', '✨'];
             heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-            
             heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Antara 2-5 detik
-            
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
             document.body.appendChild(heart);
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
+            setTimeout(() => { heart.remove(); }, 5000);
         }
-        setInterval(createHeart, 300); // Muncul tiap 0.3 detik
+        setInterval(createHeart, 300);
     </script>
 </body>
 </html>
