@@ -543,7 +543,7 @@
         const albumArt = document.getElementById('albumArt');
         const visualizer = document.getElementById('visualizer');
 
-        // Kursor Kustom Tingkat Tinggi Untuk Dekstop PC
+        // KURSOR KUSTOM DESKTOP PC
         const cursor = document.getElementById('customCursor');
         const glow = document.getElementById('customGlow');
         
@@ -568,7 +568,7 @@
             });
         }
 
-        // Rumus Matematika Akurat 3D Spatial Parallax (Card & Image Berbeda Kedalaman)
+        // PARALLAX 3D SPATIAL
         const allCards = document.querySelectorAll('.card');
         allCards.forEach(card => {
             const wrapper = card.querySelector('.img-wrapper');
@@ -576,11 +576,8 @@
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left - (rect.width/2);
                 const y = e.clientY - rect.top - (rect.height/2);
-                
                 card.style.transform = `rotateY(${x / 16}deg) rotateX(${-y / 16}deg) scale(1.025)`;
-                if(wrapper) {
-                    wrapper.style.transform = `translateZ(40px) rotateY(${x / 30}deg) rotateX(${-y / 30}deg)`;
-                }
+                if(wrapper) wrapper.style.transform = `translateZ(40px) rotateY(${x / 30}deg) rotateX(${-y / 30}deg)`;
             });
             card.addEventListener('mouseleave', () => {
                 card.style.transform = `rotateY(0deg) rotateX(0deg) scale(1)`;
@@ -588,7 +585,7 @@
             });
         });
 
-        // Efek Pengetikan Mesin Tik Otomatis (Typewriter)
+        // TYPEWRITER EFFECT
         const textTarget = "Sebuah ruang kecil untuk merayakan semua cerita indah tentang kita. ✨";
         let textIndex = 0;
         function typeWriter() {
@@ -602,35 +599,77 @@
         }
         window.addEventListener('load', typeWriter);
 
-        // Pengatur Kontrol Putar Pemutar Audio Spotify
+        // ==========================================
+        // SISTEM ENGINE AUDIO PREMIUM (ANTI-BLOCKED)
+        // ==========================================
+        
+        function updateUIPlay() {
+            playBtn.innerHTML = '<span>⏸ Jeda Musik</span>';
+            notice.innerText = 'Ed Sheeran — Perfect sedang menemani harimu... 💖';
+            albumArt.classList.add('playing');
+            visualizer.classList.add('active');
+        }
+
+        function updateUIPause() {
+            playBtn.innerHTML = '<span>▶ Putar Musik</span>';
+            notice.innerText = 'Musik dijeda 💚';
+            albumArt.classList.remove('playing');
+            visualizer.classList.remove('active');
+        }
+
+        // Fungsi utama tombol play/pause
         function togglePlay() {
             if (audio.paused) {
-                audio.play().then(() => {
-                    playBtn.innerHTML = '<span>⏸ Jeda Musik</span>';
-                    notice.innerText = 'Ed Sheeran — Perfect sedang menemani harimu... 💖';
-                    albumArt.classList.add('playing');
-                    visualizer.classList.add('active');
-                }).catch(() => { audio.load(); audio.play(); });
+                audio.play()
+                    .then(() => { updateUIPlay(); })
+                    .catch((error) => {
+                        console.log("Autoplay diblokir browser, memuat ulang audio stream...");
+                        audio.load();
+                        audio.play().then(() => { updateUIPlay(); });
+                    });
             } else {
                 audio.pause();
-                playBtn.innerHTML = '<span>▶ Putar Musik</span>';
-                notice.innerText = 'Musik dijeda 💚';
-                albumArt.classList.remove('playing');
-                visualizer.classList.remove('active');
+                updateUIPause();
             }
         }
 
+        // SISTEM ULTRA-FAILSAFE: Ketukan pertama di area mana saja pada layar akan otomatis menyalakan lagu
+        function forceAudioOnFirstTouch() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    updateUIPlay();
+                    // Hapus listener setelah musik berhasil menyala agar tidak mengganggu ketukan selanjutnya
+                    document.removeEventListener('click', forceAudioOnFirstTouch);
+                    document.removeEventListener('touchstart', forceAudioOnFirstTouch);
+                }).catch(() => {
+                    // Jika masih gagal karena interaksi belum dianggap sah oleh browser, biarkan listener tetap aktif
+                });
+            }
+        }
+        // Pasang sensor ketukan di seluruh body halaman web
+        document.addEventListener('click', forceAudioOnFirstTouch);
+        document.addEventListener('touchstart', forceAudioOnFirstTouch);
+
+        // Pengatur durasi waktu berjalan
         function formatTime(seconds) {
+            if (isNaN(seconds)) return "0:00";
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
         audio.addEventListener('timeupdate', () => {
-            const percentage = (audio.currentTime / audio.duration) * 100;
-            progressFilled.style.width = `${percentage}%`;
-            currentTimeEl.innerText = formatTime(audio.currentTime);
-            if(audio.duration) durationTimeEl.innerText = formatTime(audio.duration);
+            if (audio.duration) {
+                const percentage = (audio.currentTime / audio.duration) * 100;
+                progressFilled.style.width = `${percentage}%`;
+                currentTimeEl.innerText = formatTime(audio.currentTime);
+                durationTimeEl.innerText = formatTime(audio.duration);
+            }
+        });
+
+        // Supaya total durasi langsung muncul saat lagu siap
+        audio.addEventListener('loadedmetadata', () => {
+            durationTimeEl.innerText = formatTime(audio.duration);
         });
 
         function seekAudio(e) {
@@ -638,18 +677,13 @@
             if(audio.duration) audio.currentTime = (e.offsetX / width) * audio.duration;
         }
 
-        // Pembuka Surat Rahasia Dengan Efek Ledakan Trigonometri Melingkar
+        // SECRET LETTER & PARTIKEL TRIGONOMETRI
         function openSecretLetter() {
             const letter = document.getElementById('secretLetterCard');
             const heartBtn = document.getElementById('heartBtn');
             const triggerText = document.getElementById('triggerText');
-            
             const rect = heartBtn.getBoundingClientRect();
-            // Meluncurkan 32 partikel dalam formasi melingkar penuh
-            for(let i=0; i<32; i++) {
-                createExplosionHeart(rect.left + rect.width/2, rect.top + rect.height/2, i, 32);
-            }
-
+            for(let i=0; i<32; i++) createExplosionHeart(rect.left + rect.width/2, rect.top + rect.height/2, i, 32);
             heartBtn.style.transform = "scale(0)";
             setTimeout(() => {
                 heartBtn.style.display = "none"; triggerText.style.display = "none";
@@ -665,31 +699,27 @@
             p.style.pointerEvents = 'none'; p.style.zIndex = '1000';
             p.style.fontSize = Math.random() * 8 + 14 + 'px';
             document.body.appendChild(p);
-
-            // Rumus Matematika Lingkaran Sempurna
             const angle = (index / total) * Math.PI * 2;
-            const velocity = Math.random() * 4 + 5; // Kecepatan ledakan konstan
+            const velocity = Math.random() * 4 + 5;
             let posX = x; let posY = y; let opacity = 1;
-
             const interval = setInterval(() => {
                 posX += Math.cos(angle) * velocity;
-                posY += Math.sin(angle) * velocity + 0.2; // Efek gravitasi mikro
+                posY += Math.sin(angle) * velocity + 0.2;
                 opacity -= 0.02;
                 p.style.left = posX + 'px'; p.style.top = posY + 'px'; p.style.opacity = opacity;
                 if(opacity <= 0) { clearInterval(interval); p.remove(); }
             }, 16);
         }
 
-        // Efek Scroll Reveal Fokus Mulus (Fading & Deblurring)
+        // SCROLL REVEAL
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('revealed');
             });
         }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
-
         document.querySelectorAll('.card, .grid-container').forEach(el => observer.observe(el));
 
-        // Generator Hujan Kosmik Lambat (Atmosfer Romantis)
+        // RAIN HEART ATMOSPHERE
         function createRainHeart() {
             const heart = document.createElement('div');
             heart.classList.add('star-particle');
