@@ -333,7 +333,7 @@
         .card .img-wrapper {
             width: 100%; border-radius: 20px; overflow: hidden; margin-bottom: 22px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.55); background: #040406;
-            transform: translateZ(35px); /* Foto keluar melayang */
+            transform: translateZ(35px);
             transition: transform 0.18s ease-out;
         }
 
@@ -341,7 +341,7 @@
 
         .card p {
             font-size: 0.95rem; line-height: 1.8; color: #cbd5e1;
-            transform: translateZ(20px); /* Teks melayang sedang */
+            transform: translateZ(20px);
         }
 
         .card p strong {
@@ -425,7 +425,7 @@
         </div>
         
         <audio id="myAudio" loop preload="auto">
-            <source src="musik.mp3" type="audio/mpeg">
+            <source src="lagu.mpeg" type="audio/mpeg">
         </audio>
 
         <div class="spotify-player">
@@ -605,7 +605,7 @@
         
         function updateUIPlay() {
             playBtn.innerHTML = '<span>⏸ Jeda Musik</span>';
-            notice.innerText = 'Ed Sheeran — Perfect sedang menemani harimu... 💖';
+            notice.innerText = 'Lagu Ed Sheeran - Perfect sedang diputar... 💖';
             albumArt.classList.add('playing');
             visualizer.classList.add('active');
         }
@@ -617,13 +617,12 @@
             visualizer.classList.remove('active');
         }
 
-        // Fungsi utama tombol play/pause
         function togglePlay() {
             if (audio.paused) {
                 audio.play()
                     .then(() => { updateUIPlay(); })
                     .catch((error) => {
-                        console.log("Autoplay diblokir browser, memuat ulang audio stream...");
+                        console.log("Autoplay diblokir, memuat ulang stream...");
                         audio.load();
                         audio.play().then(() => { updateUIPlay(); });
                     });
@@ -633,24 +632,19 @@
             }
         }
 
-        // SISTEM ULTRA-FAILSAFE: Ketukan pertama di area mana saja pada layar akan otomatis menyalakan lagu
+        // SISTEM ULTRA-FAILSAFE: Ketukan pertama di area mana saja akan otomatis memicu lagu
         function forceAudioOnFirstTouch() {
             if (audio.paused) {
                 audio.play().then(() => {
                     updateUIPlay();
-                    // Hapus listener setelah musik berhasil menyala agar tidak mengganggu ketukan selanjutnya
                     document.removeEventListener('click', forceAudioOnFirstTouch);
                     document.removeEventListener('touchstart', forceAudioOnFirstTouch);
-                }).catch(() => {
-                    // Jika masih gagal karena interaksi belum dianggap sah oleh browser, biarkan listener tetap aktif
-                });
+                }).catch(() => {});
             }
         }
-        // Pasang sensor ketukan di seluruh body halaman web
         document.addEventListener('click', forceAudioOnFirstTouch);
         document.addEventListener('touchstart', forceAudioOnFirstTouch);
 
-        // Pengatur durasi waktu berjalan
         function formatTime(seconds) {
             if (isNaN(seconds)) return "0:00";
             const mins = Math.floor(seconds / 60);
@@ -667,7 +661,6 @@
             }
         });
 
-        // Supaya total durasi langsung muncul saat lagu siap
         audio.addEventListener('loadedmetadata', () => {
             durationTimeEl.innerText = formatTime(audio.duration);
         });
