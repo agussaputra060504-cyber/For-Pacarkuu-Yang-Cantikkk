@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Serenade for My Favorite Person 💌</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <title>For You 🤍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #020204;
-            --card-bg: rgba(8, 8, 12, 0.4);
-            --spotify-green: #1db954;
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-pink: #f43f5e;
-            --glass-border: rgba(255, 255, 255, 0.03);
-            --laser-gradient: linear-gradient(90deg, #1db954, #f43f5e, #8b5cf6, #1db954);
+            --bg-dark: #09090b;
+            --text-pure: #ffffff;
+            --text-dim: #a1a1aa;
+            --text-deep-dim: #52525b;
+            --glow-color: rgba(255, 255, 255, 0.05);
+            --accent-soft: #fafafa;
         }
 
         * {
@@ -24,501 +22,370 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-pure);
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             position: relative;
-            line-height: 1.65;
+            line-height: 1.8;
             -webkit-font-smoothing: antialiased;
+            letter-spacing: 0.01em;
         }
 
-        /* MASTER BACKGROUND: 3 Lapisan Aurora Nebula & Kosmik */
-        .master-bg {
+        /* CINEMATIC BACKGROUND: Pendaran Cahaya Statis Lembut */
+        .ambient-glow {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -2;
             overflow: hidden;
             pointer-events: none;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.015) 0%, transparent 40%);
         }
 
-        .nebula-blur {
-            position: absolute;
-            width: 100%; height: 100%;
-            filter: blur(140px);
-            opacity: 0.75;
-        }
-
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            mix-blend-mode: screen;
-            animation: fluidMotion 28s infinite ease-in-out;
-        }
-
-        .b1 { top: -20%; left: -15%; width: 60vw; height: 60vw; background: rgba(29, 185, 84, 0.16); animation-duration: 32s; }
-        .b2 { bottom: -20%; right: -15%; width: 70vw; height: 70vw; background: rgba(244, 63, 94, 0.12); animation-duration: 36s; }
-        .b3 { top: 30%; left: 35%; width: 50vw; height: 50vw; background: rgba(139, 92, 246, 0.1); animation-duration: 25s; }
-
-        @keyframes fluidMotion {
-            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            33% { transform: translate(50px, -70px) scale(1.12) rotate(120deg); }
-            66% { transform: translate(-40px, 40px) scale(0.92) rotate(240deg); }
-        }
-
-        /* Hujan Partikel Bintang / Kelopak Halus */
-        .star-particle {
+        /* Partikel Debu Kosmik Mengambang Halus (Bukan Love Jatuh yang Alay) */
+        .cosmic-dust {
             position: fixed;
-            top: -5%;
             pointer-events: none;
             z-index: 999;
+            background: #ffffff;
+            border-radius: 50%;
             opacity: 0;
-            animation: fallAnimation linear infinite;
+            animation: floatDust linear infinite;
         }
 
-        @keyframes fallAnimation {
-            0% { transform: translateY(0) rotate(0deg) scale(0.4); opacity: 0; }
-            10% { opacity: 0.6; }
-            85% { opacity: 0.6; }
-            100% { transform: translateY(105vh) rotate(360deg) scale(0.9); opacity: 0; }
-        }
-
-        /* Kursor Cahaya Interaktif (Desktop) */
-        .custom-cursor {
-            width: 6px; height: 6px; background-color: #ffffff;
-            border-radius: 50%; position: fixed; transform: translate(-50%, -50%);
-            pointer-events: none; z-index: 10000; display: none;
-            transition: width 0.25s, height 0.25s, background-color 0.25s;
-        }
-
-        .custom-cursor-glow {
-            width: 350px; height: 350px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.035) 0%, transparent 70%);
-            position: fixed; transform: translate(-50%, -50%);
-            pointer-events: none; z-index: 9999; display: none;
+        @keyframes floatDust {
+            0% { transform: translateY(105vh) translateX(0px) scale(0.5); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-5vh) translateX(30px) scale(1); opacity: 0; }
         }
 
         .container {
-            max-width: 470px;
+            max-width: 440px;
             width: 90%;
-            margin: 110px auto;
-            text-align: center;
+            margin: 140px auto 100px auto;
+            text-align: left; /* Mengubah rata kiri agar estetik seperti jurnal seni */
             position: relative;
             z-index: 10;
         }
 
-        /* Judul Efek Refleksi Perak Berlapis */
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            color: #ffffff;
-            background: linear-gradient(90deg, #ffffff, #a1a1aa, #ffffff, var(--spotify-green), #ffffff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: silverShine 8s linear infinite;
-            margin-bottom: 16px;
-            line-height: 1.25;
+        /* TYPOGRAPHY: Mewah & Minimalis */
+        .header-section {
+            margin-bottom: 80px;
         }
 
-        @keyframes silverShine {
-            to { background-position: 200% center; }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-pure);
+            line-height: 1.3;
+            margin-bottom: 18px;
         }
 
         .typewriter-container {
-            min-height: 48px;
-            margin-bottom: 50px;
+            min-height: 40px;
         }
 
         .subtitle {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.05rem;
-            color: var(--text-muted);
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            font-weight: 300;
             display: inline-block;
-            border-right: 1.5px solid var(--spotify-green);
+            border-right: 1px solid var(--text-dim);
             white-space: nowrap;
             overflow: hidden;
             padding-right: 4px;
         }
 
-        /* PEMUTAR MUSIK: Spotify Neo-Glass Premium */
-        .spotify-player {
-            background: rgba(6, 6, 9, 0.55);
-            backdrop-filter: blur(35px);
-            -webkit-backdrop-filter: blur(35px);
-            padding: 26px;
-            border-radius: 32px;
-            margin-bottom: 50px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255,255,255,0.06);
-            text-align: left;
-        }
-
-        .player-header {
+        /* MINIMALIST CONTROLLER: Membuang Tampilan Kotak Player Gendut */
+        .minimal-audio-control {
+            margin-bottom: 90px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 24px;
+            gap: 20px;
         }
 
-        .player-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .album-art {
-            width: 62px; height: 62px;
-            background: linear-gradient(135deg, #1a1a24, #020204);
-            border-radius: 16px;
-            margin-right: 16px;
+        .play-circle-btn {
+            width: 54px; height: 54px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            color: var(--text-pure);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .album-art.playing {
-            transform: scale(1.06);
-            box-shadow: 0 0 30px rgba(29, 185, 84, 0.35);
+        .play-circle-btn:hover {
+            background: var(--text-pure);
+            color: var(--bg-dark);
+            border-color: var(--text-pure);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
         }
 
-        .track-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 2px;
-            letter-spacing: -0.01em;
-        }
-
-        .track-artist {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Mini Equalizer Visualizer (5 Bars) */
-        .visualizer {
+        .audio-meta {
             display: flex;
-            align-items: flex-end;
-            gap: 3.5px;
-            height: 22px;
+            flex-direction: column;
         }
 
-        .bar {
-            width: 3px; height: 4px;
-            background-color: var(--spotify-green);
-            border-radius: 2px;
+        .audio-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-pure);
         }
 
-        @keyframes audioBounce {
-            0%, 100% { height: 4px; }
-            50% { height: 22px; }
+        .audio-status {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            font-weight: 300;
         }
 
-        .visualizer.active .bar:nth-child(1) { animation: audioBounce 0.8s infinite 0.1s; }
-        .visualizer.active .bar:nth-child(2) { animation: audioBounce 1.3s infinite 0.4s; }
-        .visualizer.active .bar:nth-child(3) { animation: audioBounce 0.9s infinite 0.2s; }
-        .visualizer.active .bar:nth-child(4) { animation: audioBounce 1.1s infinite 0.5s; }
-        .visualizer.active .bar:nth-child(5) { animation: audioBounce 0.7s infinite 0.3s; }
+        /* PROGRESS LINE: Garis tipis transparan */
+        .track-line-container {
+            width: 120px; height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative; margin-top: 6px;
+        }
 
-        .progress-container {
+        .track-line-fill {
+            width: 0%; height: 100%;
+            background: var(--text-pure);
+            position: absolute; top:0; left:0;
+            transition: width 0.1s linear;
+        }
+
+        /* 3D FLOATING CANVAS (Kartu Tanpa Background Tebal) */
+        .canvas-wrapper {
+            perspective: 1200px;
+            margin-bottom: 75px;
+        }
+
+        .canvas-card {
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px);
+            filter: blur(8px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .canvas-card.revealed { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+        .image-frame {
             width: 100%;
+            overflow: hidden;
+            border-radius: 14px;
+            background: #121214;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            margin-bottom: 20px;
+            transition: transform 0.2s ease-out;
+        }
+
+        .image-frame img {
+            width: 100%; height: auto; display: block;
+            filter: grayscale(15%) contrast(102%);
+            transition: transform 0.8s ease;
+        }
+
+        .canvas-card:hover .image-frame img {
+            transform: scale(1.03);
+        }
+
+        .canvas-caption {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            font-weight: 300;
+            padding-left: 2px;
+        }
+
+        .canvas-caption strong {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-pure);
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+
+        /* GRID GALLERY ASIMETRIS ELEGAN */
+        .editorial-grid {
+            margin-top: 100px;
+            margin-bottom: 80px;
+            opacity: 0; transform: translateY(40px); filter: blur(8px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .editorial-grid.revealed { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+        .grid-header-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--text-pure);
             margin-bottom: 24px;
         }
 
-        .progress-bar {
-            width: 100%; height: 5px;
-            background: rgba(255, 255, 255, 0.07);
-            border-radius: 3px;
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .grid-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: #121214;
+        }
+
+        .grid-item img { width: 100%; height: auto; display: block; filter: grayscale(10%); }
+
+        /* SURAT MINI-JOURNAL */
+        .journal-section {
+            margin-top: 120px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 60px;
+        }
+
+        .reveal-journal-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-pure);
+            padding: 12px 28px;
+            font-size: 0.82rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-radius: 4px;
             cursor: pointer;
-            position: relative;
+            transition: all 0.4s ease;
         }
 
-        .progress-filled {
-            width: 0%; height: 100%;
-            background: linear-gradient(90deg, var(--spotify-green), #34d399);
-            border-radius: 3px;
-            position: absolute;
-            top: 0; left: 0;
-            box-shadow: 0 0 10px rgba(29, 185, 84, 0.6);
+        .reveal-journal-btn:hover {
+            border-color: var(--text-pure);
+            background: rgba(255, 255, 255, 0.03);
         }
 
-        .time-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 8px;
-            font-weight: 500;
-        }
-
-        .controls-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .play-btn {
-            background-color: #ffffff;
-            color: #000000;
-            border: none;
-            padding: 14px 42px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .play-btn:hover {
-            transform: translateY(-2px) scale(1.02);
-            background-color: var(--spotify-green);
-            box-shadow: 0 15px 30px rgba(29, 185, 84, 0.35);
-        }
-
-        .play-notice {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* UTAMA: Efek Kartu 3D Paralaks & Laser Border Ganda */
-        .card-perspective {
-            perspective: 1500px;
-            margin-bottom: 35px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 30px;
-            padding: 24px;
-            border: 1px solid var(--glass-border);
-            text-align: left;
+        .letter-box {
+            display: none;
             opacity: 0;
-            transform: translateY(60px) scale(0.95);
-            filter: blur(12px);
-            transform-style: preserve-3d;
-            position: relative;
-            transition: transform 0.18s ease-out, opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s ease;
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 40px;
         }
 
-        /* Jalur laser berjalan mengelilingi kartu saat di-hover */
-        .card::before {
-            content: ''; position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px;
-            border-radius: 30px; padding: 1px;
-            background: var(--laser-gradient);
-            background-size: 300% auto;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor; mask-composite: exclude;
-            pointer-events: none; opacity: 0; transition: opacity 0.4s ease;
-            animation: laserMove 4s linear infinite;
+        .letter-box.open {
+            display: block; opacity: 1; transform: translateY(0);
         }
 
-        @keyframes laserMove {
-            to { background-position: 300% center; }
+        .letter-content {
+            font-size: 0.92rem;
+            color: var(--text-dim);
+            font-weight: 300;
+            white-space: pre-line;
+            text-align: justify;
         }
-
-        .card.revealed { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-        .card:hover::before { opacity: 0.4; }
-        .card:hover { box-shadow: 0 40px 80px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255,255,255,0.06); }
-
-        .card .img-wrapper {
-            width: 100%; border-radius: 20px; overflow: hidden; margin-bottom: 22px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.55); background: #040406;
-            transform: translateZ(35px);
-            transition: transform 0.18s ease-out;
-        }
-
-        .card img { width: 100%; height: auto; display: block; }
-
-        .card p {
-            font-size: 0.95rem; line-height: 1.8; color: #cbd5e1;
-            transform: translateZ(20px);
-        }
-
-        .card p strong {
-            color: #ffffff; font-size: 1.25rem; font-weight: 700;
-            display: inline-block; margin-bottom: 4px; letter-spacing: -0.01em;
-        }
-
-        /* GALERI GRID ASIMETRIS */
-        .grid-container {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px;
-            opacity: 0; transform: translateY(60px); filter: blur(12px);
-            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .grid-container.revealed { opacity: 1; transform: translateY(0); filter: blur(0); }
-        .grid-title { color: #ffffff; grid-column: span 2; font-size: 1.35rem; margin-bottom: 2px; font-weight: 700; text-align: left; letter-spacing: -0.01em; }
-
-        .grid-card {
-            background: var(--card-bg); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
-            border-radius: 22px; padding: 8px; border: 1px solid var(--glass-border);
-            overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.35);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .grid-card img { width: 100%; height: auto; border-radius: 14px; display: block; }
-
-        .grid-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            border-color: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 25px 45px rgba(29, 185, 84, 0.15);
-        }
-
-        /* TOMBOL SURAT RAHASIA */
-        .secret-section { margin: 80px 0 20px 0; display: flex; flex-direction: column; align-items: center; }
-
-        .heart-trigger-btn {
-            background: none; border: none; font-size: 58px; cursor: pointer;
-            animation: neonHeartbeat 1.4s infinite ease-in-out; outline: none;
-            filter: drop-shadow(0 0 30px rgba(244, 63, 94, 0.7));
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes neonHeartbeat {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 25px rgba(244, 63, 94, 0.6)); }
-            25% { transform: scale(1.18); filter: drop-shadow(0 0 40px rgba(244, 63, 94, 0.8)); }
-            35% { transform: scale(1.04); }
-            55% { transform: scale(1.22); filter: drop-shadow(0 0 45px rgba(244, 63, 94, 0.95)); }
-        }
-
-        .trigger-text { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-top: 18px; letter-spacing: 0.08em; text-transform: uppercase; }
-
-        .hidden-letter {
-            display: none; background: linear-gradient(150deg, rgba(10, 8, 12, 0.99), rgba(4, 4, 8, 0.99));
-            border: 1px solid rgba(244, 63, 94, 0.22); box-shadow: 0 45px 110px rgba(244, 63, 94, 0.08);
-            transform: scale(0.9); opacity: 0;
-        }
-
-        .hidden-letter.letter-open { display: block; animation: ultraOpen 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes ultraOpen { to { transform: scale(1); opacity: 1; } }
-
-        .letter-text { font-size: 0.95rem; line-height: 1.95; color: #e2e8f0; text-align: left; white-space: pre-line; }
     </style>
 </head>
 <body>
 
-    <div class="master-bg">
-        <div class="nebula-blur">
-            <div class="blob b1"></div>
-            <div class="blob b2"></div>
-            <div class="blob b3"></div>
-        </div>
-    </div>
+    <!-- AUDIO STREAM -->
+    <audio id="myAudio" loop preload="auto">
+        <source src="lagu.mpeg" type="audio/mpeg">
+    </audio>
 
-    <div class="custom-cursor" id="customCursor"></div>
-    <div class="custom-cursor-glow" id="customGlow"></div>
+    <div class="ambient-glow"></div>
 
     <div class="container">
-        <h1>Special Delivery for My Favorite Person 💌</h1>
-        <div class="typewriter-container">
-            <p class="subtitle" id="typewriterText"></p>
-        </div>
         
-        <audio id="myAudio" loop preload="auto">
-            <source src="lagu.mpeg" type="audio/mpeg">
-        </audio>
+        <!-- HEADER TYPOGRAPHY -->
+        <div class="header-section">
+            <h1>A small space for my favorite person.</h1>
+            <div class="typewriter-container">
+                <p class="subtitle" id="typewriterText"></p>
+            </div>
+        </div>
 
-        <div class="spotify-player">
-            <div class="player-header">
-                <div class="player-info">
-                    <div class="album-art" id="albumArt">🎵</div>
-                    <div>
-                        <p class="track-title">Perfect</p>
-                        <p class="track-artist">Ed Sheeran</p>
-                    </div>
-                </div>
-                <div class="visualizer" id="visualizer">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
+        <!-- MINIMALIST CONTROLLER -->
+        <div class="minimal-audio-control">
+            <button class="play-circle-btn" id="playBtn" onclick="togglePlay()">
+                <span id="playIcon" style="font-size: 14px; margin-left: 2px;">▶</span>
+            </button>
+            <div class="audio-meta">
+                <span class="audio-title">Perfect — Ed Sheeran</span>
+                <span class="audio-status" id="statusNotice">Tap to feel the atmosphere</span>
+                <div class="track-line-container">
+                    <div class="track-line-fill" id="trackLineFill"></div>
                 </div>
             </div>
+        </div>
+
+        <!-- MAIN MEMORIES LAYOUT (CINEMATIC CANVAS) -->
+        <div class="canvas-wrapper">
+            <div class="canvas-card">
+                <div class="image-frame"><img src="image_fcfbc4.jpg.jpeg" alt="Cinema Date"></div>
+                <p class="canvas-caption"><strong>Cinema Date Chronicles 🎬</strong>Sederhana, tapi waktu seolah berjalan lebih lambat hari itu. Duduk di sebelah kamu dan berbagi tawa di ruang gelap adalah salah satu momen yang selalu ingin aku ulang kembali.</p>
+            </div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <div class="canvas-card">
+                <div class="image-frame"><img src="image_fcfbbd.jpg.jpeg" alt="Night Out"></div>
+                <p class="canvas-caption"><strong>Our Romantic Night-Out 🌙</strong>Malam boleh saja dingin dan jalanan terasa panjang, tapi bersamamu, sudut kota yang biasa pun berubah menjadi tempat paling hangat penuh cerita.</p>
+            </div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <div class="canvas-card">
+                <div class="image-frame"><img src="image_fcfbc0.jpg.jpeg" alt="Mirror Selfie"></div>
+                <p class="canvas-caption"><strong>The Mirror Selfie 📸</strong>Momen kecil yang berhasil terekam. Meskipun kamu seringkali malu-malu di depan kamera, bagiku ekspresi spontan dan ketulusanmu di foto ini adalah definisi keindahan yang nyata.</p>
+            </div>
+        </div>
+
+        <!-- ASYMMETRIC JOURNAL GRID (CEMBERUT) -->
+        <div class="editorial-grid">
+            <h2 class="grid-header-text">Koleksi Muka Cemberut Ter-Lucu Kamu 🥰</h2>
+            <div class="grid-layout">
+                <div class="grid-item"><img src="image_fcfbdc.jpg.jpeg" alt="1"></div>
+                <div class="grid-item"><img src="image_fcfbfb.jpg.jpeg" alt="2"></div>
+                <div class="grid-item"><img src="image_fcfbfe.jpg.jpeg" alt="3"></div>
+                <div class="grid-item"><img src="image_fcfc1b.jpg.jpeg" alt="4"></div>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-deep-dim); margin-top: 14px; font-weight: 300;">Bagaimana bisa seseorang tetap terlihat begitu menggemaskan bahkan di saat sedang cemberut? Sisi kecil dari dirimu ini selalu sukses membuat aku tersenyum sendiri.</p>
+        </div>
+
+        <!-- ASYMMETRIC JOURNAL GRID (SMILES) -->
+        <div class="editorial-grid">
+            <h2 class="grid-header-text" style="color: var(--accent-soft);">More of Your Beautiful Smiles ✨</h2>
+            <div class="grid-layout">
+                <div class="grid-item"><img src="image_fcfc41.jpg.jpeg" alt="5"></div>
+                <div class="grid-item"><img src="image_photo6.jpg.jpeg" alt="6"></div>
+                <div class="grid-item"><img src="image_photo7.jpg.jpeg" alt="7"></div>
+                <div class="grid-item"><img src="image_photo8.jpg.jpeg" alt="8"></div>
+                <div class="grid-item" style="grid-column: span 2;"><img src="image_photo9.jpg.jpeg" alt="9"></div>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-deep-dim); margin-top: 14px; font-weight: 300;">Senyumanmu memiliki caranya sendiri untuk meredakan badai dan mencerahkan hari-hari yang melelahkan. Menyimpan memori ini adalah caraku merawat bahagia.</p>
+        </div>
+
+        <!-- MASA DEPAN -->
+        <div class="canvas-wrapper" style="margin-top: 60px;">
+            <div class="canvas-card">
+                <div class="image-frame"><img src="image_fcfc77.jpg.jpeg" alt="Future Dream"></div>
+                <p class="canvas-caption"><strong>Langkah Menuju Masa Depan 🌸</strong>Layaknya dua anak kecil yang berjalan selaras membawa bunga, aku berharap kita bisa terus menggenggam jemari satu sama lain. Bertumbuh bersama, melewati setiap perubahan musim hidup, hingga hari tua nanti tiba.</p>
+            </div>
+        </div>
+
+        <!-- CONTEMPORARY JOURNAL LETTER -->
+        <div class="journal-section">
+            <button class="reveal-journal-btn" id="journalBtn" onclick="toggleJournal()">Read Sincerity Letter</button>
             
-            <div class="progress-container" onclick="seekAudio(event)">
-                <div class="progress-bar">
-                    <div class="progress-filled" id="progressFilled"></div>
-                </div>
-                <div class="time-info">
-                    <span id="currentTime">0:00</span>
-                    <span id="durationTime">4:23</span>
-                </div>
-            </div>
-
-            <div class="controls-wrapper">
-                <button class="play-btn" id="playBtn" onclick="togglePlay()">
-                    <span>▶ Putar Musik</span>
-                </button>
-                <p class="play-notice" id="statusNotice">Nyalakan musik untuk menyempurnakan suasana 💚</p>
-            </div>
-        </div>
-
-        <div class="card-perspective">
-            <div class="card">
-                <div class="img-wrapper"><img src="image_fcfbc4.jpg.jpeg" alt="Cinema Date"></div>
-                <p><strong>Cinema Date Chronicles 🎬</strong><br>Sederhana, tapi waktu seolah berjalan lebih lambat hari itu. Duduk di sebelah kamu dan berbagi tawa di ruang gelap adalah salah satu momen yang selalu ingin aku ulang kembali.</p>
-            </div>
-        </div>
-
-        <div class="card-perspective">
-            <div class="card">
-                <div class="img-wrapper"><img src="image_fcfbbd.jpg.jpeg" alt="Night Out"></div>
-                <p><strong>Our Romantic Night-Out 🌙</strong><br>Malam boleh saja dingin dan jalanan terasa panjang, tapi bersamamu, sudut kota yang biasa pun berubah menjadi tempat paling hangat penuh cerita.</p>
-            </div>
-        </div>
-
-        <div class="card-perspective">
-            <div class="card">
-                <div class="img-wrapper"><img src="image_fcfbc0.jpg.jpeg" alt="Mirror Selfie"></div>
-                <p><strong>The Mirror Selfie 📸</strong><br>Momen kecil yang berhasil terekam. Meskipun kamu seringkali malu-malu di depan kamera, bagiku ekspresi spontan dan ketulusanmu di foto ini adalah definisi keindahan yang nyata.</p>
-            </div>
-        </div>
-
-        <div class="grid-container">
-            <div class="grid-title">Koleksi Muka Cemberut Ter-Lucu Kamu 🥰</div>
-            <div class="grid-card"><img src="image_fcfbdc.jpg.jpeg" alt="Pose 1"></div>
-            <div class="grid-card"><img src="image_fcfbfb.jpg.jpeg" alt="Pose 2"></div>
-            <div class="grid-card"><img src="image_fcfbfe.jpg.jpeg" alt="Pose 3"></div>
-            <div class="grid-card"><img src="image_fcfc1b.jpg.jpeg" alt="Pose 4"></div>
-            <p style="grid-column: span 2; font-size: 0.88rem; color: var(--text-muted); margin-top: 10px; text-align: left;">Bagaimana bisa seseorang tetap terlihat begitu menggemaskan bahkan di saat sedang cemberut? Sisi kecil dari dirimu ini selalu sukses membuat aku tersenyum sendiri.</p>
-        </div>
-
-        <div class="grid-container" style="margin-top: 50px;">
-            <div class="grid-title" style="color: var(--accent-pink);">More of Your Beautiful Smiles ✨</div>
-            <div class="grid-card"><img src="image_fcfc41.jpg.jpeg" alt="More 1"></div>
-            <div class="grid-card"><img src="image_photo6.jpg.jpeg" alt="More 2"></div>
-            <div class="grid-card"><img src="image_photo7.jpg.jpeg" alt="More 3"></div>
-            <div class="grid-card"><img src="image_photo8.jpg.jpeg" alt="More 4"></div>
-            <div class="grid-card" style="grid-column: span 2;"><img src="image_photo9.jpg.jpeg" alt="More 5"></div>
-            <p style="grid-column: span 2; font-size: 0.88rem; color: var(--text-muted); margin-top: 10px; text-align: left;">Senyumanmu memiliki caranya sendiri untuk meredakan badai dan mencerahkan hari-hari yang melelahkan. Menyimpan memori ini adalah caraku merawat bahagia.</p>
-        </div>
-
-        <div class="card-perspective" style="margin-top: 50px;">
-            <div class="card">
-                <div class="img-wrapper"><img src="image_fcfc77.jpg.jpeg" alt="Future Dream"></div>
-                <p><strong style="color: var(--accent-pink);">Langkah Menuju Masa Depan 🌸</strong></p>
-                <p style="margin-top: 6px;">Layaknya dua anak kecil yang berjalan selaras membawa bunga, aku berharap kita bisa terus menggenggam jemari satu sama lain. Bertumbuh bersama, melewati setiap perubahan musim hidup, hingga hari tua nanti tiba.</p>
-            </div>
-        </div>
-
-        <div class="secret-section">
-            <button class="heart-trigger-btn" id="heartBtn" onclick="openSecretLetter()">❤️</button>
-            <p class="trigger-text" id="triggerText">Sentuh untuk membaca surat terbuka</p>
-            
-            <div class="card hidden-letter" id="secretLetterCard">
-                <p><strong style="color: var(--accent-pink); font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem;">A Letter of Sincerity... 🕊️</strong></p>
-                <div class="letter-text">
+            <div class="letter-box" id="journalBox">
+                <p class="letter-content">
                     Untukmu, seseorang yang kehadirannya selalu aku syukuri.
 
                     Lewat ruang digital yang tenang ini, aku ingin menyampaikan sebentuk perasaan yang barangkali kerap luput terucap dalam riuhnya keseharian kita. 
@@ -528,202 +395,124 @@
                     Perasaanku padamu tumbuh secara sederhana namun mendalam, tanpa perlu banyak perayaan yang berlebihan. Tetaplah menjadi dirimu yang hangat, dan mari kita rajut lembaran cerita baru di hari-hari yang akan datang.
                     
                     — Dengan seluruh ketulusan, Putra.
-                </div>
+                </p>
             </div>
         </div>
+
     </div>
 
     <script>
         const audio = document.getElementById('myAudio');
         const playBtn = document.getElementById('playBtn');
+        const playIcon = document.getElementById('playIcon');
         const notice = document.getElementById('statusNotice');
-        const progressFilled = document.getElementById('progressFilled');
-        const currentTimeEl = document.getElementById('currentTime');
-        const durationTimeEl = document.getElementById('durationTime');
-        const albumArt = document.getElementById('albumArt');
-        const visualizer = document.getElementById('visualizer');
+        const lineFill = document.getElementById('trackLineFill');
 
-        // KURSOR KUSTOM DESKTOP PC
-        const cursor = document.getElementById('customCursor');
-        const glow = document.getElementById('customGlow');
-        
-        if (window.matchMedia("(pointer: fine)").matches) {
-            cursor.style.display = "block";
-            glow.style.display = "block";
-            window.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-                glow.style.left = e.clientX + 'px';
-                glow.style.top = e.clientY + 'px';
-            });
-            document.querySelectorAll('button, .card, .grid-card').forEach(item => {
-                item.addEventListener('mouseenter', () => { 
-                    cursor.style.transform = "translate(-50%, -50%) scale(2.8)"; 
-                    cursor.style.backgroundColor = "rgba(255,255,255,0.25)"; 
-                });
-                item.addEventListener('mouseleave', () => { 
-                    cursor.style.transform = "translate(-50%, -50%) scale(1)"; 
-                    cursor.style.backgroundColor = "#ffffff"; 
-                });
-            });
-        }
-
-        // PARALLAX 3D SPATIAL
-        const allCards = document.querySelectorAll('.card');
-        allCards.forEach(card => {
-            const wrapper = card.querySelector('.img-wrapper');
+        const cards = document.querySelectorAll('.canvas-card');
+        cards.forEach(card => {
+            const frame = card.querySelector('.image-frame');
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left - (rect.width/2);
-                const y = e.clientY - rect.top - (rect.height/2);
-                card.style.transform = `rotateY(${x / 16}deg) rotateX(${-y / 16}deg) scale(1.025)`;
-                if(wrapper) wrapper.style.transform = `translateZ(40px) rotateY(${x / 30}deg) rotateX(${-y / 30}deg)`;
+                const x = (e.clientX - rect.left) - (rect.width/2);
+                const y = (e.clientY - rect.top) - (rect.height/2);
+                card.style.transform = `rotateY(${x / 25}deg) rotateX(${-y / 25}deg)`;
+                if(frame) frame.style.transform = `translateZ(15px)`;
             });
             card.addEventListener('mouseleave', () => {
-                card.style.transform = `rotateY(0deg) rotateX(0deg) scale(1)`;
-                if(wrapper) wrapper.style.transform = `translateZ(25px) rotateY(0deg) rotateX(0deg)`;
+                card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+                if(frame) frame.style.transform = `translateZ(0px)`;
             });
         });
 
-        // TYPEWRITER EFFECT
         const textTarget = "Sebuah ruang kecil untuk merayakan semua cerita indah tentang kita. ✨";
         let textIndex = 0;
         function typeWriter() {
             if (textIndex < textTarget.length) {
                 document.getElementById("typewriterText").innerHTML += textTarget.charAt(textIndex);
                 textIndex++;
-                setTimeout(typeWriter, 55);
+                setTimeout(typeWriter, 50);
             } else {
                 document.getElementById("typewriterText").style.borderRight = "none";
             }
         }
         window.addEventListener('load', typeWriter);
 
-        // ==========================================
-        // SISTEM ENGINE AUDIO PREMIUM (ANTI-BLOCKED)
-        // ==========================================
-        
         function updateUIPlay() {
-            playBtn.innerHTML = '<span>⏸ Jeda Musik</span>';
-            notice.innerText = 'Lagu Ed Sheeran - Perfect sedang diputar... 💖';
-            albumArt.classList.add('playing');
-            visualizer.classList.add('active');
+            playIcon.innerText = '⏸';
+            notice.innerText = 'Now Playing — Enjoy the memories';
+            playBtn.style.background = '#ffffff';
+            playBtn.style.color = '#09090b';
         }
 
         function updateUIPause() {
-            playBtn.innerHTML = '<span>▶ Putar Musik</span>';
-            notice.innerText = 'Musik dijeda 💚';
-            albumArt.classList.remove('playing');
-            visualizer.classList.remove('active');
+            playIcon.innerText = '▶';
+            notice.innerText = 'Music paused';
+            playBtn.style.background = 'transparent';
+            playBtn.style.color = '#ffffff';
         }
 
         function togglePlay() {
             if (audio.paused) {
-                audio.play()
-                    .then(() => { updateUIPlay(); })
-                    .catch((error) => {
-                        console.log("Autoplay diblokir, memuat ulang stream...");
-                        audio.load();
-                        audio.play().then(() => { updateUIPlay(); });
-                    });
+                audio.play().then(() => { updateUIPlay(); }).catch(() => {
+                    audio.load();
+                    audio.play().then(() => { updateUIPlay(); });
+                });
             } else {
                 audio.pause();
                 updateUIPause();
             }
         }
 
-        // SISTEM ULTRA-FAILSAFE: Ketukan pertama di area mana saja akan otomatis memicu lagu
-        function forceAudioOnFirstTouch() {
+        function autoPlayTouch() {
             if (audio.paused) {
                 audio.play().then(() => {
                     updateUIPlay();
-                    document.removeEventListener('click', forceAudioOnFirstTouch);
-                    document.removeEventListener('touchstart', forceAudioOnFirstTouch);
+                    document.removeEventListener('click', autoPlayTouch);
+                    document.removeEventListener('touchstart', autoPlayTouch);
                 }).catch(() => {});
             }
         }
-        document.addEventListener('click', forceAudioOnFirstTouch);
-        document.addEventListener('touchstart', forceAudioOnFirstTouch);
-
-        function formatTime(seconds) {
-            if (isNaN(seconds)) return "0:00";
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-        }
+        document.addEventListener('click', autoPlayTouch);
+        document.addEventListener('touchstart', autoPlayTouch);
 
         audio.addEventListener('timeupdate', () => {
             if (audio.duration) {
                 const percentage = (audio.currentTime / audio.duration) * 100;
-                progressFilled.style.width = `${percentage}%`;
-                currentTimeEl.innerText = formatTime(audio.currentTime);
-                durationTimeEl.innerText = formatTime(audio.duration);
+                lineFill.style.width = `${percentage}%`;
             }
         });
 
-        audio.addEventListener('loadedmetadata', () => {
-            durationTimeEl.innerText = formatTime(audio.duration);
-        });
-
-        function seekAudio(e) {
-            const width = e.currentTarget.clientWidth;
-            if(audio.duration) audio.currentTime = (e.offsetX / width) * audio.duration;
+        function toggleJournal() {
+            const box = document.getElementById('journalBox');
+            const btn = document.getElementById('journalBtn');
+            box.classList.toggle('open');
+            if(box.classList.contains('open')) {
+                btn.innerText = "Close Letter";
+                setTimeout(() => { box.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 200);
+            } else {
+                btn.innerText = "Read Sincerity Letter";
+            }
         }
 
-        // SECRET LETTER & PARTIKEL TRIGONOMETRI
-        function openSecretLetter() {
-            const letter = document.getElementById('secretLetterCard');
-            const heartBtn = document.getElementById('heartBtn');
-            const triggerText = document.getElementById('triggerText');
-            const rect = heartBtn.getBoundingClientRect();
-            for(let i=0; i<32; i++) createExplosionHeart(rect.left + rect.width/2, rect.top + rect.height/2, i, 32);
-            heartBtn.style.transform = "scale(0)";
-            setTimeout(() => {
-                heartBtn.style.display = "none"; triggerText.style.display = "none";
-                letter.classList.add('letter-open');
-                setTimeout(() => { letter.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 200);
-            }, 300);
-        }
-
-        function createExplosionHeart(x, y, index, total) {
-            const p = document.createElement('div');
-            p.innerText = ['❤️', '💖', '✨', '💕', '🌸'][Math.floor(Math.random() * 5)];
-            p.style.position = 'fixed'; p.style.left = x + 'px'; p.style.top = y + 'px';
-            p.style.pointerEvents = 'none'; p.style.zIndex = '1000';
-            p.style.fontSize = Math.random() * 8 + 14 + 'px';
-            document.body.appendChild(p);
-            const angle = (index / total) * Math.PI * 2;
-            const velocity = Math.random() * 4 + 5;
-            let posX = x; let posY = y; let opacity = 1;
-            const interval = setInterval(() => {
-                posX += Math.cos(angle) * velocity;
-                posY += Math.sin(angle) * velocity + 0.2;
-                opacity -= 0.02;
-                p.style.left = posX + 'px'; p.style.top = posY + 'px'; p.style.opacity = opacity;
-                if(opacity <= 0) { clearInterval(interval); p.remove(); }
-            }, 16);
-        }
-
-        // SCROLL REVEAL
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('revealed');
             });
-        }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
-        document.querySelectorAll('.card, .grid-container').forEach(el => observer.observe(el));
+        }, { threshold: 0.02 });
+        document.querySelectorAll('.canvas-card, .editorial-grid').forEach(el => observer.observe(el));
 
-        // RAIN HEART ATMOSPHERE
-        function createRainHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('star-particle');
-            heart.innerText = ['❤️', '💖', '✨', '💕'][Math.floor(Math.random() * 4)];
-            heart.style.left = Math.random() * 98 + "vw";
-            heart.style.fontSize = Math.random() * 5 + 11 + "px";
-            heart.style.animationDuration = Math.random() * 4 + 6 + "s";
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 10000);
+        function createDust() {
+            const dust = document.createElement('div');
+            dust.classList.add('cosmic-dust');
+            dust.style.left = Math.random() * 100 + "vw";
+            const size = Math.random() * 2.5 + 1 + "px";
+            dust.style.width = size;
+            dust.style.height = size;
+            dust.style.animationDuration = Math.random() * 5 + 7 + "s";
+            document.body.appendChild(dust);
+            setTimeout(() => { dust.remove(); }, 12000);
         }
-        setInterval(createRainHeart, 600);
+        setInterval(createDust, 350);
     </script>
 </body>
 </html>
