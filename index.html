@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You 🤍</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <title>For You My Beautiful Girl🤍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght=0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #09090b;
+            --bg-dark: #070709;
             --text-pure: #ffffff;
             --text-dim: #a1a1aa;
-            --text-deep-dim: #52525b;
-            --glow-color: rgba(255, 255, 255, 0.05);
+            --text-deep-dim: #44444a;
             --accent-soft: #fafafa;
+            --glass-card: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.05);
         }
 
         * {
@@ -32,19 +33,18 @@
             letter-spacing: 0.01em;
         }
 
-        /* CINEMATIC BACKGROUND: Pendaran Cahaya Statis Lembut */
+        /* CINEMATIC BACKGROUND */
         .ambient-glow {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -2;
-            overflow: hidden;
             pointer-events: none;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.015) 0%, transparent 40%);
+                radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.025) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.015) 0%, transparent 45%);
         }
 
-        /* Partikel Debu Kosmik Mengambang Halus (Bukan Love Jatuh yang Alay) */
+        /* Partikel Debu Kosmik Mengambang */
         .cosmic-dust {
             position: fixed;
             pointer-events: none;
@@ -56,29 +56,27 @@
         }
 
         @keyframes floatDust {
-            0% { transform: translateY(105vh) translateX(0px) scale(0.5); opacity: 0; }
-            10% { opacity: 0.3; }
-            90% { opacity: 0.3; }
-            100% { transform: translateY(-5vh) translateX(30px) scale(1); opacity: 0; }
+            0% { transform: translateY(105vh) translateX(0px) scale(0.4); opacity: 0; }
+            10% { opacity: 0.25; }
+            90% { opacity: 0.25; }
+            100% { transform: translateY(-5vh) translateX(25px) scale(0.8); opacity: 0; }
         }
 
         .container {
             max-width: 440px;
             width: 90%;
             margin: 140px auto 100px auto;
-            text-align: left; /* Mengubah rata kiri agar estetik seperti jurnal seni */
+            text-align: left;
             position: relative;
             z-index: 10;
         }
 
-        /* TYPOGRAPHY: Mewah & Minimalis */
-        .header-section {
-            margin-bottom: 80px;
-        }
+        /* TYPOGRAPHY */
+        .header-section { margin-bottom: 70px; }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             font-weight: 400;
             font-style: italic;
             color: var(--text-pure);
@@ -86,9 +84,7 @@
             margin-bottom: 18px;
         }
 
-        .typewriter-container {
-            min-height: 40px;
-        }
+        .typewriter-container { min-height: 40px; }
 
         .subtitle {
             font-size: 0.9rem;
@@ -101,18 +97,18 @@
             padding-right: 4px;
         }
 
-        /* MINIMALIST CONTROLLER: Membuang Tampilan Kotak Player Gendut */
+        /* MINIMALIST CONTROLLER */
         .minimal-audio-control {
-            margin-bottom: 90px;
+            margin-bottom: 80px;
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
         .play-circle-btn {
-            width: 54px; height: 54px;
+            width: 56px; height: 56px;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             background: transparent;
             color: var(--text-pure);
             display: flex;
@@ -126,31 +122,17 @@
             background: var(--text-pure);
             color: var(--bg-dark);
             border-color: var(--text-pure);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
         }
 
-        .audio-meta {
-            display: flex;
-            flex-direction: column;
-        }
+        .audio-meta { display: flex; flex-direction: column; }
+        .audio-title { font-size: 0.9rem; font-weight: 500; color: var(--text-pure); }
+        .audio-status { font-size: 0.78rem; color: var(--text-dim); font-weight: 300; }
 
-        .audio-title {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-pure);
-        }
-
-        .audio-status {
-            font-size: 0.78rem;
-            color: var(--text-dim);
-            font-weight: 300;
-        }
-
-        /* PROGRESS LINE: Garis tipis transparan */
         .track-line-container {
-            width: 120px; height: 2px;
-            background: rgba(255, 255, 255, 0.1);
-            position: relative; margin-top: 6px;
+            width: 130px; height: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            position: relative; margin-top: 8px;
         }
 
         .track-line-fill {
@@ -160,10 +142,51 @@
             transition: width 0.1s linear;
         }
 
-        /* 3D FLOATING CANVAS (Kartu Tanpa Background Tebal) */
+        /* INTERACTIVE GLASS MEMO (VARIASI BARU) */
+        .glass-memo {
+            background: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 70px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-memo:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .memo-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            margin-bottom: 6px;
+            display: block;
+        }
+        .memo-text {
+            font-size: 0.88rem;
+            color: #e4e4e7;
+            font-weight: 300;
+        }
+        .memo-hint {
+            font-size: 0.72rem;
+            color: var(--text-deep-dim);
+            margin-top: 10px;
+            display: block;
+            text-align: right;
+            font-style: italic;
+        }
+
+        /* 3D FLOATING CANVAS WITH ARTISTIC STICKERS */
         .canvas-wrapper {
             perspective: 1200px;
-            margin-bottom: 75px;
+            margin-bottom: 85px;
+            position: relative;
         }
 
         .canvas-card {
@@ -179,22 +202,20 @@
         .image-frame {
             width: 100%;
             overflow: hidden;
-            border-radius: 14px;
-            background: #121214;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-            margin-bottom: 20px;
-            transition: transform 0.2s ease-out;
+            border-radius: 16px;
+            background: #111113;
+            box-shadow: 0 35px 70px rgba(0,0,0,0.45);
+            margin-bottom: 22px;
+            position: relative;
         }
 
         .image-frame img {
             width: 100%; height: auto; display: block;
-            filter: grayscale(15%) contrast(102%);
+            filter: grayscale(10%) contrast(101%);
             transition: transform 0.8s ease;
         }
 
-        .canvas-card:hover .image-frame img {
-            transform: scale(1.03);
-        }
+        .canvas-card:hover .image-frame img { transform: scale(1.025); }
 
         .canvas-caption {
             font-size: 0.88rem;
@@ -206,17 +227,44 @@
         .canvas-caption strong {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-pure);
             display: block;
             margin-bottom: 6px;
             font-weight: 400;
         }
 
-        /* GRID GALLERY ASIMETRIS ELEGAN */
+        /* ELEMEN STIKER LINE ART YANG ELEGAN & CUTE */
+        .aesthetic-sticker {
+            position: absolute;
+            z-index: 20;
+            pointer-events: none;
+            font-size: 24px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)) opacity(0.8);
+            transition: transform 0.4s ease;
+        }
+        
+        /* Animasi stiker berdenyut halus saat musik menyala */
+        .music-active .aesthetic-sticker {
+            animation: stickerPulse 2s infinite ease-in-out alternate;
+        }
+
+        @keyframes stickerPulse {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.08) rotate(5deg); }
+        }
+
+        /* Posisi presisi masing-masing stiker unik */
+        .stk-cinema { top: -15px; right: 15px; font-size: 28px; }
+        .stk-stars { bottom: 120px; left: -20px; font-size: 26px; }
+        .stk-cam { top: -10px; left: 20px; font-size: 26px; }
+        .stk-sparkle { top: -12px; right: -10px; font-size: 24px; }
+        .stk-heart { bottom: 110px; right: -15px; font-size: 22px; }
+
+        /* EDITORIAL ASYMMETRIC GRID */
         .editorial-grid {
-            margin-top: 100px;
-            margin-bottom: 80px;
+            margin-top: 110px;
+            margin-bottom: 90px;
             opacity: 0; transform: translateY(40px); filter: blur(8px);
             transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -225,50 +273,50 @@
         .grid-header-text {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             color: var(--text-pure);
-            margin-bottom: 24px;
+            margin-bottom: 26px;
         }
 
         .grid-layout {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
+            gap: 16px;
         }
 
         .grid-item {
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            background: #121214;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+            background: #111113;
         }
 
-        .grid-item img { width: 100%; height: auto; display: block; filter: grayscale(10%); }
+        .grid-item img { width: 100%; height: auto; display: block; }
 
-        /* SURAT MINI-JOURNAL */
+        /* JOURNAL SECTION */
         .journal-section {
-            margin-top: 120px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 130px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             padding-top: 60px;
         }
 
         .reveal-journal-btn {
             background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             color: var(--text-pure);
-            padding: 12px 28px;
-            font-size: 0.82rem;
+            padding: 13px 30px;
+            font-size: 0.8rem;
             font-weight: 400;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.4s ease;
         }
 
         .reveal-journal-btn:hover {
             border-color: var(--text-pure);
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .letter-box {
@@ -276,25 +324,16 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-            margin-top: 40px;
+            margin-top: 45px;
         }
 
-        .letter-box.open {
-            display: block; opacity: 1; transform: translateY(0);
-        }
-
-        .letter-content {
-            font-size: 0.92rem;
-            color: var(--text-dim);
-            font-weight: 300;
-            white-space: pre-line;
-            text-align: justify;
-        }
+        .letter-box.open { display: block; opacity: 1; transform: translateY(0); }
+        .letter-content { font-size: 0.92rem; color: var(--text-dim); font-weight: 300; white-space: pre-line; text-align: justify; }
     </style>
 </head>
-<body>
+<body id="mainBody">
 
-    <!-- AUDIO STREAM -->
+    <!-- AUDIO CORE ELEMENT -->
     <audio id="myAudio" loop preload="auto">
         <source src="lagu.mpeg" type="audio/mpeg">
     </audio>
@@ -325,8 +364,17 @@
             </div>
         </div>
 
-        <!-- MAIN MEMORIES LAYOUT (CINEMATIC CANVAS) -->
+        <!-- INTERACTIVE GLASS MEMO (VARIASI DINAMIS BARU) -->
+        <div class="glass-memo" onclick="changeQuote()">
+            <span class="memo-tag">Daily Note 📝</span>
+            <p class="memo-text" id="quoteText">"Dalam ribuan tawa yang pernah aku dengar, senyum dan suaramu adalah satu-satunya frekuensi yang selalu ingin aku kunci."</p>
+            <span class="memo-hint">Tap kartu ini untuk membongkar catatan lain...</span>
+        </div>
+
+        <!-- MAIN MEMORIES LAYOUT (WITH LINE-ART STICKERS) -->
         <div class="canvas-wrapper">
+            <!-- STIKER 1: TIKET BIOSKOP DAN KILAUAN -->
+            <div class="aesthetic-sticker stk-cinema">🎟️</div>
             <div class="canvas-card">
                 <div class="image-frame"><img src="image_fcfbc4.jpg.jpeg" alt="Cinema Date"></div>
                 <p class="canvas-caption"><strong>Cinema Date Chronicles 🎬</strong>Sederhana, tapi waktu seolah berjalan lebih lambat hari itu. Duduk di sebelah kamu dan berbagi tawa di ruang gelap adalah salah satu momen yang selalu ingin aku ulang kembali.</p>
@@ -334,6 +382,8 @@
         </div>
 
         <div class="canvas-wrapper">
+            <!-- STIKER 2: BINTANG KOSMIK MALAM -->
+            <div class="aesthetic-sticker stk-stars">✨</div>
             <div class="canvas-card">
                 <div class="image-frame"><img src="image_fcfbbd.jpg.jpeg" alt="Night Out"></div>
                 <p class="canvas-caption"><strong>Our Romantic Night-Out 🌙</strong>Malam boleh saja dingin dan jalanan terasa panjang, tapi bersamamu, sudut kota yang biasa pun berubah menjadi tempat paling hangat penuh cerita.</p>
@@ -341,13 +391,15 @@
         </div>
 
         <div class="canvas-wrapper">
+            <!-- STIKER 3: INSTAX CAMERA -->
+            <div class="aesthetic-sticker stk-cam">📸</div>
             <div class="canvas-card">
                 <div class="image-frame"><img src="image_fcfbc0.jpg.jpeg" alt="Mirror Selfie"></div>
                 <p class="canvas-caption"><strong>The Mirror Selfie 📸</strong>Momen kecil yang berhasil terekam. Meskipun kamu seringkali malu-malu di depan kamera, bagiku ekspresi spontan dan ketulusanmu di foto ini adalah definisi keindahan yang nyata.</p>
             </div>
         </div>
 
-        <!-- ASYMMETRIC JOURNAL GRID (CEMBERUT) -->
+        <!-- ASYMMETRIC GRID (CEMBERUT) -->
         <div class="editorial-grid">
             <h2 class="grid-header-text">Koleksi Muka Cemberut Ter-Lucu Kamu 🥰</h2>
             <div class="grid-layout">
@@ -359,21 +411,25 @@
             <p style="font-size: 0.82rem; color: var(--text-deep-dim); margin-top: 14px; font-weight: 300;">Bagaimana bisa seseorang tetap terlihat begitu menggemaskan bahkan di saat sedang cemberut? Sisi kecil dari dirimu ini selalu sukses membuat aku tersenyum sendiri.</p>
         </div>
 
-        <!-- ASYMMETRIC JOURNAL GRID (SMILES) -->
-        <div class="editorial-grid">
-            <h2 class="grid-header-text" style="color: var(--accent-soft);">More of Your Beautiful Smiles ✨</h2>
-            <div class="grid-layout">
-                <div class="grid-item"><img src="image_fcfc41.jpg.jpeg" alt="5"></div>
-                <div class="grid-item"><img src="image_photo6.jpg.jpeg" alt="6"></div>
-                <div class="grid-item"><img src="image_photo7.jpg.jpeg" alt="7"></div>
-                <div class="grid-item"><img src="image_photo8.jpg.jpeg" alt="8"></div>
-                <div class="grid-item" style="grid-column: span 2;"><img src="image_photo9.jpg.jpeg" alt="9"></div>
+        <!-- ASYMMETRIC GRID (SMILES WITH SPARKLE STICKER) -->
+        <div class="canvas-wrapper">
+            <div class="aesthetic-sticker stk-sparkle">✨</div>
+            <div class="editorial-grid">
+                <h2 class="grid-header-text" style="color: var(--accent-soft);">More of Your Beautiful Smiles ✨</h2>
+                <div class="grid-layout">
+                    <div class="grid-item"><img src="image_fcfc41.jpg.jpeg" alt="5"></div>
+                    <div class="grid-item"><img src="image_photo6.jpg.jpeg" alt="6"></div>
+                    <div class="grid-item"><img src="image_photo7.jpg.jpeg" alt="7"></div>
+                    <div class="grid-item"><img src="image_photo8.jpg.jpeg" alt="8"></div>
+                    <div class="grid-item" style="grid-column: span 2;"><img src="image_photo9.jpg.jpeg" alt="9"></div>
+                </div>
+                <p style="font-size: 0.82rem; color: var(--text-deep-dim); margin-top: 14px; font-weight: 300;">Senyumanmu memiliki caranya sendiri untuk meredakan badai dan mencerahkan hari-hari yang melelahkan. Menyimpan memori ini adalah caraku merawat bahagia.</p>
             </div>
-            <p style="font-size: 0.82rem; color: var(--text-deep-dim); margin-top: 14px; font-weight: 300;">Senyumanmu memiliki caranya sendiri untuk meredakan badai dan mencerahkan hari-hari yang melelahkan. Menyimpan memori ini adalah caraku merawat bahagia.</p>
         </div>
 
-        <!-- MASA DEPAN -->
+        <!-- MASA DEPAN WITH COFFEE/FLOWER STICKER -->
         <div class="canvas-wrapper" style="margin-top: 60px;">
+            <div class="aesthetic-sticker stk-heart">🌱</div>
             <div class="canvas-card">
                 <div class="image-frame"><img src="image_fcfc77.jpg.jpeg" alt="Future Dream"></div>
                 <p class="canvas-caption"><strong>Langkah Menuju Masa Depan 🌸</strong>Layaknya dua anak kecil yang berjalan selaras membawa bunga, aku berharap kita bisa terus menggenggam jemari satu sama lain. Bertumbuh bersama, melewati setiap perubahan musim hidup, hingga hari tua nanti tiba.</p>
@@ -407,7 +463,28 @@
         const playIcon = document.getElementById('playIcon');
         const notice = document.getElementById('statusNotice');
         const lineFill = document.getElementById('trackLineFill');
+        const mainBody = document.getElementById('mainBody');
 
+        // VARIABEL STRINGS UNTUK MEMO KACA INTERAKTIF
+        const quotesList = [
+            "\"Dalam ribuan tawa yang pernah aku dengar, senyum dan suaramu adalah satu-satunya frekuensi yang selalu ingin aku kunci.\" 🔒",
+            "\"Terima kasih ya, sudah menjadi bagian terbaik sekaligus paling tenang dari perjalanan panjang yang aku lalui.\" 🕊️",
+            "\"Kamu itu seperti kopi pagi hari; tidak perlu mencolok untuk bisa membangunkan dan menenangkan seluruh isi kepalaku.\" ☕",
+            "\"Kalau hari ini melelahkan, ingat ya kalau ruang kecil digital ini selalu terbuka untuk menyambut kepulanganmu.\" 🏡"
+        ];
+        let currentQuoteIndex = 0;
+
+        function changeQuote() {
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotesList.length;
+            const memoText = document.getElementById('quoteText');
+            memoText.style.opacity = 0;
+            setTimeout(() => {
+                memoText.innerText = quotesList[currentQuoteIndex];
+                memoText.style.opacity = 1;
+            }, 250);
+        }
+
+        // PARALLAX 3D
         const cards = document.querySelectorAll('.canvas-card');
         cards.forEach(card => {
             const frame = card.querySelector('.image-frame');
@@ -424,6 +501,7 @@
             });
         });
 
+        // TYPEWRITER EFFECT
         const textTarget = "Sebuah ruang kecil untuk merayakan semua cerita indah tentang kita. ✨";
         let textIndex = 0;
         function typeWriter() {
@@ -437,11 +515,13 @@
         }
         window.addEventListener('load', typeWriter);
 
+        // AUDIO CONTROLLER ENGINE
         function updateUIPlay() {
             playIcon.innerText = '⏸';
             notice.innerText = 'Now Playing — Enjoy the memories';
             playBtn.style.background = '#ffffff';
-            playBtn.style.color = '#09090b';
+            playBtn.style.color = '#070709';
+            mainBody.classList.add('music-active'); // Memicu stiker berdenyut
         }
 
         function updateUIPause() {
@@ -449,6 +529,7 @@
             notice.innerText = 'Music paused';
             playBtn.style.background = 'transparent';
             playBtn.style.color = '#ffffff';
+            mainBody.classList.remove('music-active');
         }
 
         function togglePlay() {
@@ -463,6 +544,7 @@
             }
         }
 
+        // FAILSAFE ON FIRST INTERACTION
         function autoPlayTouch() {
             if (audio.paused) {
                 audio.play().then(() => {
@@ -482,6 +564,7 @@
             }
         });
 
+        // JOURNAL TOGGLE
         function toggleJournal() {
             const box = document.getElementById('journalBox');
             const btn = document.getElementById('journalBtn');
@@ -494,6 +577,7 @@
             }
         }
 
+        // SCROLL REVEAL SCENE
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('revealed');
@@ -501,11 +585,12 @@
         }, { threshold: 0.02 });
         document.querySelectorAll('.canvas-card, .editorial-grid').forEach(el => observer.observe(el));
 
+        // COSMIC DUST PARTICLES
         function createDust() {
             const dust = document.createElement('div');
             dust.classList.add('cosmic-dust');
             dust.style.left = Math.random() * 100 + "vw";
-            const size = Math.random() * 2.5 + 1 + "px";
+            const size = Math.random() * 2 + 1 + "px";
             dust.style.width = size;
             dust.style.height = size;
             dust.style.animationDuration = Math.random() * 5 + 7 + "s";
