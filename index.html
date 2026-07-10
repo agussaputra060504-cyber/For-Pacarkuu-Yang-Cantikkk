@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Delivery for My Favorite Person 💌</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --accent-pink: #ff7597;
+            --accent-green: #a3b899;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+        /* Efek Hujan Hati / Salju */
+        .heart-drop {
+            position: fixed;
+            top: -10%;
+            font-size: 20px;
+            animation: fall linear infinite;
+            z-index: 999;
+            pointer-events: none;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+        .container {
+            max-width: 600px;
+            width: 90%;
+            margin: 40px auto;
+            text-align: center;
+        }
+        h1 {
+            color: var(--accent-pink);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: breathe 3s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .subtitle {
+            font-style: italic;
+            color: #bbb;
+            margin-bottom: 30px;
+        }
+        .music-box {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border: 1px solid #2a2a2a;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        /* Tema Warna Khusus per Seksi */
+        .cinema { border-left: 5px solid var(--accent-pink); }
+        .night { border-left: 5px solid #4a90e2; }
+        .mirror { border-left: 5px solid #f5a623; }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .grid-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 10px;
+            border: 1px solid #2a2a2a;
+        }
+        .grid-card img {
+            width: 100%;
+            border-radius: 10px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+        .grid-title {
+            color: var(--accent-green);
+            grid-column: span 2;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        .footer-card {
+            background: linear-gradient(145deg, #2b1f24, #1e1e1e);
+            border: 2px dashed var(--accent-pink);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Musik Latar Otomatis (Menggunakan Audio Plesetan Estetik / Piano Bebas Hak Cipta) -->
+    <div class="container">
+        <h1>Special Delivery for My Favorite Person 💌</h1>
+        <p class="subtitle">Dari Agus Saputra khusus buat kamu yang paling cantik ✨</p>
+        
+        <div class="music-box">
+            <p style="margin-top:0; font-size:0.9rem; color:var(--accent-pink);">🎵 Musik Latar untuk Kamu:</p>
+            <audio controls autoplay loop style="width: 100%;">
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                Browser kamu tidak mendukung pemutar musik otomatis.
+            </audio>
+        </div>
+
+        <!-- SEKSI 1: Kencan Nonton Bioskop -->
+        <div class="card cinema">
+            <img src="image_fcfbc4.jpg" alt="Cinema Date">
+            <p><strong>Cinema Date Chronicles 🎬</strong><br>Inget gak waktu kita nonton ini? Salah satu momen favorit aku karena bisa duduk manis di sebelah kamu seharian.</p>
+        </div>
+
+        <!-- SEKSI 2: Jalan-jalan Malam -->
+        <div class="card night">
+            <img src="image_fcfbbd.jpg" alt="Night Out">
+            <p><strong>Our Romantic Night-Out 🌙</strong><br>Mau sedalam apa pun malamnya, dunia terasa terang benderang tiap kali aku bareng kamu.</p>
+        </div>
+
+        <!-- SEKSI 3: Mirror Selfie -->
+        <div class="card mirror">
+            <img src="image_fcfbc0.jpg" alt="Mirror Selfie">
+            <p><strong>The Mirror Selfie 📸</strong><br>Gemes banget tiap liat foto ini. Biarpun kamunya malu-malu tutup muka, di mata aku kamu tetep yang paling mempesona!</p>
+        </div>
+
+        <!-- SEKSI 4: Grid Foto Muka Gemas Kamu -->
+        <div class="grid-container">
+            <div class="grid-title"><strong>Koleksi Muka Cemberut Ter-Gemas Kamu 🥰</strong></div>
+            <div class="grid-card">
+                <img src="image_fcfbdc.jpg" alt="Pose 1">
+            </div>
+            <div class="grid-card">
+                <img src="image_fcfbfb.jpg" alt="Pose 2">
+            </div>
+            <div class="grid-card">
+                <img src="image_fcfbfe.jpg" alt="Pose 3">
+            </div>
+            <div class="grid-card">
+                <img src="image_fcfc1b.jpg" alt="Pose 4">
+            </div>
+            <p style="grid-column: span 2; font-size: 1rem; color: #aaa; margin: 5px 0 0 0;">Heran deh, mau pose cemberut atau pasang muka gimana juga herannya kok gak bosenin dan tetep lucu terus!</p>
+        </div>
+
+        <!-- SEKSI 5: Foto Masa Depan (Penutup) -->
+        <div class="card footer-card">
+            <img src="image_fcfc77.jpg" alt="Future Dream">
+            <p style="font-size: 1.2rem; color: var(--accent-pink);"><strong>Impian Masa Depan Kita 🌸</strong></p>
+            <p style="margin-top: 10px;">Kayak dua anak kecil lucu yang bawa bunga ini, aku harap kita bisa terus gandengan tangan, melewati hari dengan tawa, dan tumbuh bersama sampai tua nanti. *I Love You So Much!* ❤️</p>
+        </div>
+    </div>
+
+    <!-- Script Animasi Hujan Hati Otomatis -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-drop');
+            
+            // Randomize antara hati merah, pink, atau putih
+            const hearts = ['❤️', '💖', '🌸', '✨'];
+            heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+            
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Antara 2-5 detik
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 300); // Muncul tiap 0.3 detik
+    </script>
+</body>
+</html>
