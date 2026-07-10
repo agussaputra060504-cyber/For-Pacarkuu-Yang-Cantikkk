@@ -89,6 +89,8 @@
         .cinema { border-left: 5px solid var(--accent-pink); }
         .night { border-left: 5px solid #4a90e2; }
         .mirror { border-left: 5px solid #f5a623; }
+        
+        /* Grid Layout */
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -123,20 +125,22 @@
 
     <div class="container">
         <h1>Special Delivery for My Favorite Person 💌</h1>
-        <p class="subtitle">Dari Agus Saputra khusus buat kamu yang paling cantik ✨</p>
+        <p class="subtitle">Dari Putra khusus buat kamu yang paling cantik ✨</p>
         
         <div class="music-box">
             <p style="margin-top:0; font-size:0.9rem; color:var(--accent-pink);">🎵 Musik Latar untuk Kamu:</p>
+            <!-- Musik diganti menjadi Ed Sheeran - Perfect -->
             <audio controls autoplay loop style="width: 100%;">
-                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
                 Browser kamu tidak mendukung pemutar musik otomatis.
             </audio>
+            <p style="margin-bottom:0; font-size:0.8rem; color:#aaa; font-style:italic;">Ed Sheeran - Perfect 🎶</p>
         </div>
 
         <!-- SEKSI 1: Kencan Nonton Bioskop -->
         <div class="card cinema">
             <img src="image_fcfbc4.jpg.jpeg" alt="Cinema Date">
-            <p><strong>Cinema Date Chronicles 🎬</strong><br>Inget gak waktu kita nonton ini? Salah satu momen favorit aku karena bisa duduk manis di sebelah kamu seharian.</p>
+            <p><strong>Cinema Date Chronicles 🎬</strong><br>Inget gak waktu kita nonton ini? Salah satu momen favorit aku karena bisa duduk manis di sebelah kamu.</p>
         </div>
 
         <!-- SEKSI 2: Jalan-jalan Malam -->
@@ -151,9 +155,9 @@
             <p><strong>The Mirror Selfie 📸</strong><br>Gemes banget tiap liat foto ini. Biarpun kamunya malu-malu tutup muka, di mata aku kamu tetep yang paling mempesona!</p>
         </div>
 
-        <!-- SEKSI 4: Grid Foto Muka Gemas Kamu -->
+        <!-- SEKSI 4: Grid Foto Muka Gemas Kamu (4 Foto) -->
         <div class="grid-container">
-            <div class="grid-title"><strong>Koleksi Muka Cemberut Ter-Gemas Kamu 🥰</strong></div>
+            <div class="grid-title"><strong>Koleksi Muka Cemberut Ter-Lucu Kamu 🥰</strong></div>
             <div class="grid-card">
                 <img src="image_fcfbdc.jpg.jpeg" alt="Pose 1">
             </div>
@@ -169,8 +173,29 @@
             <p style="grid-column: span 2; font-size: 1rem; color: #aaa; margin: 5px 0 0 0;">Heran deh, mau pose cemberut atau pasang muka gimana juga herannya kok gak bosenin dan tetep lucu terus!</p>
         </div>
 
+        <!-- SEKSI TAMBAHAN: Galeri Foto Cantik Kamu Lainnya (5 Foto Baru) -->
+        <div class="grid-container" style="margin-top: 35px;">
+            <div class="grid-title" style="color: var(--accent-pink);"><strong>More of Your Beautiful Smiles ✨</strong></div>
+            <div class="grid-card">
+                <img src="image_fcfc41.jpg.jpeg" alt="More 1">
+            </div>
+            <div class="grid-card">
+                <img src="image_photo6.jpg.jpeg" alt="More 2">
+            </div>
+            <div class="grid-card">
+                <img src="image_photo7.jpg.jpeg" alt="More 3">
+            </div>
+            <div class="grid-card">
+                <img src="image_photo8.jpg.jpeg" alt="More 4">
+            </div>
+            <div class="grid-card" style="grid-column: span 2; aspect-ratio: unset;">
+                <img src="image_photo9.jpg.jpeg" alt="More 5" style="aspect-ratio: unset; max-height: 400px; object-fit: cover;">
+            </div>
+            <p style="grid-column: span 2; font-size: 1rem; color: #aaa; margin: 5px 0 0 0;">Nggak ada alasan khusus sih, cuma mau majang foto kamu lebih banyak aja karena ngeliat kamu senyum itu bikin hari-hari aku jadi jauh lebih baik.</p>
+        </div>
+
         <!-- SEKSI 5: Foto Masa Depan (Penutup) -->
-        <div class="card footer-card">
+        <div class="card footer-card" style="margin-top: 35px;">
             <img src="image_fcfc77.jpg.jpeg" alt="Future Dream">
             <p style="font-size: 1.2rem; color: var(--accent-pink);"><strong>Impian Masa Depan Kita 🌸</strong></p>
             <p style="margin-top: 10px;">Kayak dua anak kecil lucu yang bawa bunga ini, aku harap kita bisa terus gandengan tangan, melewati hari dengan tawa, dan tumbuh bersama sampai tua nanti. *I Love You So Much!* ❤️</p>
