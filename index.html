@@ -223,9 +223,9 @@
             </div>
             
             <div class="controls-wrapper">
-                <!-- File audio internal dengan parameter anti-cache untuk memicu reload paksa -->
-                <audio id="myAudio" loop>
-                    <source src="musik.mp3?v=1" type="audio/mpeg">
+                <!-- File audio internal -->
+                <audio id="myAudio" loop preload="auto">
+                    <source src="musik.mp3" type="audio/mpeg">
                 </audio>
                 <button class="play-btn" id="playBtn" onclick="togglePlay()">
                     <span>▶ Putar Musik</span>
@@ -306,13 +306,19 @@
 
         function togglePlay() {
             if (audio.paused) {
-                audio.play().then(() => {
+                audio.play()
+                .then(() => {
                     playBtn.innerHTML = '<span>⏸ Jeda Musik</span>';
                     playBtn.style.backgroundColor = '#ff7597';
                     notice.innerText = 'Lagu Ed Sheeran - Perfect sedang diputar... 💖';
-                }).catch(error => {
-                    alert("Gagal memutar audio otomatis. Mohon coba klik tombolnya sekali lagi ya!");
-                    console.log(error);
+                })
+                .catch(error => {
+                    // Coba trigger play manual sekali lagi jika browser memblokir interaksi awal
+                    audio.load();
+                    audio.play();
+                    playBtn.innerHTML = '<span>⏸ Jeda Musik</span>';
+                    playBtn.style.backgroundColor = '#ff7597';
+                    notice.innerText = 'Lagu Ed Sheeran - Perfect sedang diputar... 💖';
                 });
             } else {
                 audio.pause();
