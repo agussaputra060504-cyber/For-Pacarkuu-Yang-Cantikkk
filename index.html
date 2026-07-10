@@ -55,12 +55,88 @@
             margin-bottom: 30px;
         }
         
-        /* Spotify Widget Container */
-        .spotify-container {
-            margin-bottom: 35px;
+        /* Custom Spotify Player Style */
+        .spotify-player {
+            background: #181818;
+            padding: 20px;
             border-radius: 12px;
-            overflow: hidden;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            border: 1px solid #282828;
+        }
+        .player-info {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .album-art {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #121212, #282828);
+            border-radius: 4px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .track-details {
+            flex-grow: 1;
+        }
+        .track-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 4px 0;
+        }
+        .track-artist {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+        
+        /* Custom Audio Buttons */
+        .controls-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .play-btn {
+            background-color: var(--spotify-green);
+            color: black;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .play-btn:hover {
+            transform: scale(1.05);
+            background-color: #1ed760;
+        }
+        .play-notice {
+            font-size: 0.9rem;
+            color: var(--spotify-green);
+            font-weight: 600;
+            margin: 5px 0 0 0;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
         }
 
         /* Card Styles */
@@ -136,9 +212,26 @@
         <h1>Special Delivery for My Favorite Person 💌</h1>
         <p class="subtitle">Dari Putra khusus buat kamu yang paling cantik ✨</p>
         
-        <!-- WIDGET RESMI SPOTIFY (ED SHEERAN - PERFECT) -->
-        <div class="spotify-container">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1bhOS79gN41pW40pnt86wf?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <!-- CUSTOM SPOTIFY MUSIC PLAYER -->
+        <div class="spotify-player">
+            <div class="player-info">
+                <div class="album-art">🎵</div>
+                <div class="track-details">
+                    <p class="track-title">Perfect</p>
+                    <p class="track-artist">Ed Sheeran</p>
+                </div>
+            </div>
+            
+            <div class="controls-wrapper">
+                <!-- File audio internal dengan parameter anti-cache untuk memicu reload paksa -->
+                <audio id="myAudio" loop>
+                    <source src="musik.mp3?v=1" type="audio/mpeg">
+                </audio>
+                <button class="play-btn" id="playBtn" onclick="togglePlay()">
+                    <span>▶ Putar Musik</span>
+                </button>
+                <p class="play-notice" id="statusNotice">Klik tombol di atas untuk dengerin musiknya ya Cantikkk 💚</p>
+            </div>
         </div>
 
         <!-- SEKSI 1: Kencan Nonton Bioskop -->
@@ -207,6 +300,28 @@
     </div>
 
     <script>
+        const audio = document.getElementById('myAudio');
+        const playBtn = document.getElementById('playBtn');
+        const notice = document.getElementById('statusNotice');
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playBtn.innerHTML = '<span>⏸ Jeda Musik</span>';
+                    playBtn.style.backgroundColor = '#ff7597';
+                    notice.innerText = 'Lagu Ed Sheeran - Perfect sedang diputar... 💖';
+                }).catch(error => {
+                    alert("Gagal memutar audio otomatis. Mohon coba klik tombolnya sekali lagi ya!");
+                    console.log(error);
+                });
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '<span>▶ Putar Musik</span>';
+                playBtn.style.backgroundColor = 'var(--spotify-green)';
+                notice.innerText = 'Musik dijeda 💚';
+            }
+        }
+
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart-drop');
