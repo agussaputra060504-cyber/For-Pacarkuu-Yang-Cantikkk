@@ -7,13 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050508;
-            --card-bg: rgba(13, 13, 18, 0.4);
+            --bg-color: #030305;
+            --card-bg: rgba(10, 10, 15, 0.45);
             --spotify-green: #1db954;
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
             --accent-pink: #f43f5e;
-            --glass-border: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --neon-glow: rgba(29, 185, 84, 0.15);
         }
 
         * {
@@ -31,57 +32,35 @@
             line-height: 1.6;
         }
 
-        /* FITUR BARU: Latar Belakang Aurora Cair yang Bergerak Hidup */
+        /* LATAR BELAKANG: Nebula Aurora Cair & Kosmik Interaktif */
         .aurora-bg {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -2;
             overflow: hidden;
             pointer-events: none;
-            filter: blur(100px);
-            opacity: 0.6;
+            filter: blur(120px);
+            opacity: 0.7;
         }
 
         .aurora-blob {
             position: absolute;
             border-radius: 50%;
             mix-blend-mode: screen;
-            animation: moveBlob 20s infinite ease-in-out;
+            animation: moveBlob 25s infinite ease-in-out;
         }
 
-        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: rgba(29, 185, 84, 0.15); animation-duration: 25s; }
-        .blob-2 { bottom: -10%; right: -10%; width: 60vw; height: 60vw; background: rgba(244, 63, 94, 0.12); animation-duration: 30s; }
-        .blob-3 { top: 40%; left: 50%; width: 40vw; height: 40vw; background: rgba(147, 51, 234, 0.1); animation-duration: 20s; }
+        .blob-1 { top: -15%; left: -10%; width: 55vw; height: 55vw; background: rgba(29, 185, 84, 0.18); animation-duration: 28s; }
+        .blob-2 { bottom: -15%; right: -10%; width: 65vw; height: 65vw; background: rgba(244, 63, 94, 0.14); animation-duration: 32s; }
+        .blob-3 { top: 35%; left: 45%; width: 45vw; height: 45vw; background: rgba(147, 51, 234, 0.12); animation-duration: 22s; }
 
         @keyframes moveBlob {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.15); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
+            33% { transform: translate(40px, -60px) scale(1.15); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
         }
 
-        /* FITUR BARU: Kursor Pendar Cahaya Interaktif */
-        .custom-cursor {
-            width: 20px; height: 20px;
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            position: fixed;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 10000;
-            transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
-            display: none; /* Otomatis aktif via JS di perangkat desktop */
-        }
-
-        .custom-cursor-glow {
-            width: 200px; height: 200px;
-            background: radial-gradient(circle, rgba(29, 185, 84, 0.06) 0%, transparent 70%);
-            position: fixed;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 10000;
-        }
-
-        /* Kelopak Bintang Mengalir */
+        /* Efek Hujan Bintang Kelap-Kelip */
         .heart-drop {
             position: fixed;
             top: -5%;
@@ -92,32 +71,55 @@
         }
 
         @keyframes fall {
-            0% { transform: translateY(0) rotate(0deg) scale(0.6); opacity: 0; }
-            15% { opacity: 0.5; }
-            90% { opacity: 0.5; }
+            0% { transform: translateY(0) rotate(0deg) scale(0.5); opacity: 0; }
+            15% { opacity: 0.6; }
+            85% { opacity: 0.6; }
             100% { transform: translateY(105vh) rotate(360deg) scale(1); opacity: 0; }
+        }
+
+        /* Kursor Pendar Halus (Aesthetic Follower untuk PC) */
+        .custom-cursor {
+            width: 8px; height: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 10000;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            display: none;
+        }
+
+        .custom-cursor-glow {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 65%);
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
         }
 
         .container {
             max-width: 480px;
             width: 90%;
-            margin: 120px auto;
+            margin: 100px auto;
             text-align: center;
         }
 
-        /* Efek Kilau pada Teks Judul Utama */
+        /* Desain Judul Utama dengan Kilau Berjalan */
         h1 {
-            font-size: 1.9rem;
+            font-size: 2.1rem;
             font-weight: 800;
             letter-spacing: -0.04em;
             color: #ffffff;
-            background: linear-gradient(90deg, #ffffff, #94a3b8, #ffffff, var(--spotify-green), #ffffff);
+            background: linear-gradient(90deg, #ffffff, #a1a1aa, #ffffff, var(--spotify-green), #ffffff);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shineText 6s linear infinite;
+            animation: shineText 7s linear infinite;
             margin-bottom: 16px;
-            line-height: 1.3;
+            line-height: 1.25;
         }
 
         @keyframes shineText {
@@ -125,8 +127,8 @@
         }
 
         .typewriter-container {
-            min-height: 28px;
-            margin-bottom: 60px;
+            min-height: 48px;
+            margin-bottom: 50px;
         }
 
         .subtitle {
@@ -141,24 +143,25 @@
             padding-right: 4px;
         }
 
-        /* Spotify Player Premium Custom */
+        /* Pemutar Musik Spotify Kaca Estetik V3 */
         .spotify-player {
-            background: rgba(10, 10, 14, 0.5);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            padding: 24px;
-            border-radius: 28px;
-            margin-bottom: 60px;
+            background: rgba(8, 8, 12, 0.6);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            padding: 26px;
+            border-radius: 32px;
+            margin-bottom: 50px;
             border: 1px solid var(--glass-border);
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.05);
             text-align: left;
+            position: relative;
         }
 
         .player-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 24px;
+            margin-bottom: 22px;
         }
 
         .player-info {
@@ -167,25 +170,25 @@
         }
 
         .album-art {
-            width: 64px; height: 64px;
+            width: 60px; height: 60px;
             background: linear-gradient(135deg, #1e1e24, #050508);
             border-radius: 16px;
-            margin-right: 18px;
+            margin-right: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 26px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .album-art.playing {
             transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(29, 185, 84, 0.25);
+            box-shadow: 0 0 25px rgba(29, 185, 84, 0.3);
         }
 
         .track-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 2px;
@@ -197,7 +200,7 @@
             color: var(--text-muted);
         }
 
-        /* Soundwave Mini Visualizer */
+        /* Garis Soundwave Mini */
         .visualizer {
             display: flex;
             align-items: flex-end;
@@ -206,10 +209,9 @@
         }
 
         .bar {
-            width: 3.5px; height: 4px;
+            width: 3px; height: 4px;
             background-color: var(--spotify-green);
             border-radius: 2px;
-            transition: height 0.3s ease;
         }
 
         @keyframes bounce {
@@ -228,7 +230,7 @@
 
         .progress-bar {
             width: 100%; height: 4px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 2px;
             cursor: pointer;
             position: relative;
@@ -255,14 +257,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
 
         .play-btn {
             background-color: #ffffff;
             color: #000000;
             border: none;
-            padding: 14px 44px;
+            padding: 14px 40px;
             border-radius: 30px;
             font-weight: 700;
             font-size: 0.95rem;
@@ -270,11 +272,12 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            box-shadow: 0 10px 20px rgba(255,255,255,0.05);
         }
 
         .play-btn:hover {
-            transform: translateY(-3px) scale(1.03);
+            transform: translateY(-2px);
             background-color: var(--spotify-green);
             box-shadow: 0 15px 30px rgba(29, 185, 84, 0.3);
         }
@@ -284,25 +287,25 @@
             color: var(--text-muted);
         }
 
-        /* FITUR UTAMA: Efek Kartu 3D Perspektif & Blur Transisi */
+        /* STRUKTUR UTAMA: Efek Kartu 3D Perspektif */
         .card-perspective {
-            perspective: 1000px;
-            margin-bottom: 40px;
+            perspective: 1200px;
+            margin-bottom: 35px;
         }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border-radius: 28px;
-            padding: 24px;
+            padding: 22px;
             border: 1px solid var(--glass-border);
             text-align: left;
             opacity: 0;
-            transform: translateY(40px) scale(0.95);
-            filter: blur(8px);
+            transform: translateY(50px) scale(0.96);
+            filter: blur(10px);
             transform-style: preserve-3d;
-            transition: transform 0.1s ease, opacity 0.8s ease, filter 0.8s ease, border-color 0.4s;
+            transition: transform 0.15s ease-out, opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
         }
 
         .card.revealed {
@@ -312,18 +315,18 @@
         }
 
         .card:hover {
-            border-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.05);
         }
 
         .card .img-wrapper {
             width: 100%;
             border-radius: 18px;
             overflow: hidden;
-            margin-bottom: 22px;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-            background: #09090c;
-            transform: translateZ(20px); /* Efek Kedalaman 3D */
+            margin-bottom: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            background: #060608;
+            transform: translateZ(25px); /* Kedalaman Foto */
         }
 
         .card img {
@@ -332,9 +335,9 @@
 
         .card p {
             font-size: 0.94rem;
-            line-height: 1.7;
+            line-height: 1.75;
             color: #cbd5e1;
-            transform: translateZ(10px);
+            transform: translateZ(15px); /* Kedalaman Teks */
         }
 
         .card p strong {
@@ -342,20 +345,20 @@
             font-size: 1.2rem;
             font-weight: 700;
             display: inline-block;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             letter-spacing: -0.01em;
         }
 
-        /* Grid Komponen Galeri */
+        /* GRID KOMPONEN: Galeri Grid Asimetris */
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 18px;
+            gap: 16px;
             margin-bottom: 40px;
             opacity: 0;
-            transform: translateY(40px);
-            filter: blur(8px);
-            transition: all 0.8s ease;
+            transform: translateY(50px);
+            filter: blur(10px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .grid-container.revealed {
@@ -368,7 +371,7 @@
             color: #ffffff;
             grid-column: span 2;
             font-size: 1.3rem;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             font-weight: 700;
             text-align: left;
             letter-spacing: -0.01em;
@@ -376,30 +379,29 @@
 
         .grid-card {
             background: var(--card-bg);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-radius: 22px;
-            padding: 10px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 20px;
+            padding: 8px;
             border: 1px solid var(--glass-border);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .grid-card img {
             width: 100%; height: auto; border-radius: 14px; display: block;
-            transition: transform 0.6s ease;
         }
 
         .grid-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 15px 35px rgba(29, 185, 84, 0.1);
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.09);
+            box-shadow: 0 20px 40px rgba(29, 185, 84, 0.12);
         }
 
-        /* Surat Rahasia Interaktif */
+        /* SEKSI SURAT: Interaktivitas Tingkat Tinggi */
         .secret-section {
-            margin: 80px 0 30px 0;
+            margin: 70px 0 20px 0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -410,33 +412,33 @@
             border: none;
             font-size: 55px;
             cursor: pointer;
-            animation: heartbeat 1.6s infinite ease-in-out;
+            animation: heartbeat 1.5s infinite ease-in-out;
             outline: none;
-            filter: drop-shadow(0 0 20px rgba(244, 63, 94, 0.5));
-            transition: transform 0.4s ease;
+            filter: drop-shadow(0 0 25px rgba(244, 63, 94, 0.6));
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
             25% { transform: scale(1.15); }
-            35% { transform: scale(1.06); }
-            55% { transform: scale(1.18); }
+            35% { transform: scale(1.05); }
+            55% { transform: scale(1.2); }
         }
 
         .trigger-text {
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-muted);
-            margin-top: 20px;
+            margin-top: 18px;
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
         .hidden-letter {
             display: none;
-            background: linear-gradient(150deg, rgba(16, 12, 15, 0.98), rgba(8, 8, 12, 0.98));
-            border: 1px solid rgba(244, 63, 94, 0.25);
-            box-shadow: 0 40px 90px rgba(244, 63, 94, 0.08);
+            background: linear-gradient(150deg, rgba(12, 10, 15, 0.98), rgba(6, 6, 10, 0.98));
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            box-shadow: 0 40px 100px rgba(244, 63, 94, 0.06);
             transform: scale(0.92);
             opacity: 0;
         }
@@ -452,7 +454,7 @@
 
         .letter-text {
             font-size: 0.94rem;
-            line-height: 1.85;
+            line-height: 1.9;
             color: #e2e8f0;
             text-align: left;
             white-space: pre-line;
@@ -477,7 +479,7 @@
         </div>
         
         <audio id="myAudio" loop preload="auto">
-            <source src="lagu.mpeg" type="audio/mpeg">
+            <source src="musik.mp3" type="audio/mpeg">
         </audio>
 
         <div class="spotify-player">
@@ -593,55 +595,62 @@
         const albumArt = document.getElementById('albumArt');
         const visualizer = document.getElementById('visualizer');
 
-        // Fitur Kursor Kustom Interaktif (Desktop Only)
+        // Kursor Kustom Deteksi Perangkat Input Akurat (Desktop Only)
         const cursor = document.getElementById('customCursor');
         const glow = document.getElementById('customGlow');
         
         if (window.matchMedia("(pointer: fine)").matches) {
             cursor.style.display = "block";
+            glow.style.display = "block";
             window.addEventListener('mousemove', (e) => {
                 cursor.style.left = e.clientX + 'px';
                 cursor.style.top = e.clientY + 'px';
                 glow.style.left = e.clientX + 'px';
                 glow.style.top = e.clientY + 'px';
             });
-            // Respons tombol hovered
+            // Mikro-interaksi kursor membesar saat hover
             document.querySelectorAll('button, .card, .grid-card').forEach(item => {
-                item.addEventListener('mouseenter', () => { cursor.style.transform = "translate(-50%, -50%) scale(2.2)"; cursor.style.backgroundColor = "rgba(255,255,255,0.1)"; });
-                item.addEventListener('mouseleave', () => { cursor.style.transform = "translate(-50%, -50%) scale(1)"; cursor.style.backgroundColor = "transparent"; });
+                item.addEventListener('mouseenter', () => { 
+                    cursor.style.transform = "translate(-50%, -50%) scale(2.5)"; 
+                    cursor.style.backgroundColor = "rgba(255,255,255,0.2)"; 
+                });
+                item.addEventListener('mouseleave', () => { 
+                    cursor.style.transform = "translate(-50%, -50%) scale(1)"; 
+                    cursor.style.backgroundColor = "rgba(255, 255, 255, 0.8)"; 
+                });
             });
         }
 
-        // Fitur Kartu 3D Tilt Efek (Merespons Sentuhan/Gerakan)
+        // Kalkulasi Matematika Akurat untuk Kemiringan 3D Paralaks
         const allCards = document.querySelectorAll('.card');
         allCards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left - (rect.width/2);
                 const y = e.clientY - rect.top - (rect.height/2);
-                // Batasi kemiringan maksimal 12 derajat
-                card.style.transform = `rotateY(${x / 18}deg) rotateX(${-y / 18}deg) scale(1.02)`;
+                // Kemiringan maksimal dibatasi 10 derajat agar tetap elegan
+                card.style.transform = `rotateY(${x / 20}deg) rotateX(${-y / 20}deg) scale(1.02)`;
             });
             card.addEventListener('mouseleave', () => {
                 card.style.transform = `rotateY(0deg) rotateX(0deg) scale(1)`;
             });
         });
 
-        // Typewriter Effect
+        // Efek Pengetikan (Typewriter Effect)
         const textTarget = "Sebuah ruang kecil untuk merayakan semua cerita indah tentang kita. ✨";
         let textIndex = 0;
         function typeWriter() {
             if (textIndex < textTarget.length) {
                 document.getElementById("typewriterText").innerHTML += textTarget.charAt(textIndex);
                 textIndex++;
-                setTimeout(typeWriter, 65);
+                setTimeout(typeWriter, 60);
             } else {
                 document.getElementById("typewriterText").style.borderRight = "none";
             }
         }
         window.addEventListener('load', typeWriter);
 
-        // Spotify Controls
+        // Kontrol Pemutar Audio Spotify
         function togglePlay() {
             if (audio.paused) {
                 audio.play().then(() => {
@@ -677,14 +686,14 @@
             if(audio.duration) audio.currentTime = (e.offsetX / width) * audio.duration;
         }
 
-        // Open Secret Open Letter
+        // Efek Pembuka Surat Rahasia & Ledakan Cinta Paramedis
         function openSecretLetter() {
             const letter = document.getElementById('secretLetterCard');
             const heartBtn = document.getElementById('heartBtn');
             const triggerText = document.getElementById('triggerText');
             
             const rect = heartBtn.getBoundingClientRect();
-            for(let i=0; i<20; i++) createExplosionHeart(rect.left + rect.width/2, rect.top + rect.height/2);
+            for(let i=0; i<25; i++) createExplosionHeart(rect.left + rect.width/2, rect.top + rect.height/2);
 
             heartBtn.style.transform = "scale(0)";
             setTimeout(() => {
@@ -699,43 +708,43 @@
             p.innerText = ['❤️', '💖', '✨', '💕'][Math.floor(Math.random() * 4)];
             p.style.position = 'fixed'; p.style.left = x + 'px'; p.style.top = y + 'px';
             p.style.pointerEvents = 'none'; p.style.zIndex = '1000';
-            p.style.fontSize = Math.random() * 8 + 12 + 'px';
+            p.style.fontSize = Math.random() * 8 + 14 + 'px';
             document.body.appendChild(p);
 
             const angle = Math.random() * Math.PI * 2;
-            const velocity = Math.random() * 5 + 3;
+            const velocity = Math.random() * 6 + 4;
             let posX = x; let posY = y; let opacity = 1;
 
             const interval = setInterval(() => {
                 posX += Math.cos(angle) * velocity;
-                posY += Math.sin(angle) * velocity + 0.4;
-                opacity -= 0.03;
+                posY += Math.sin(angle) * velocity + 0.3;
+                opacity -= 0.025;
                 p.style.left = posX + 'px'; p.style.top = posY + 'px'; p.style.opacity = opacity;
                 if(opacity <= 0) { clearInterval(interval); p.remove(); }
             }, 16);
         }
 
-        // Intersection Scroll Reveal (Mulus Focus Blur)
+        // Efek Gulir Mulus Fokus (Scroll Reveal)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('revealed');
             });
-        }, { threshold: 0.05, rootMargin: "0px 0px -40px 0px" });
+        }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
 
         document.querySelectorAll('.card, .grid-container').forEach(el => observer.observe(el));
 
-        // Background Elegant Stars Rain
+        // Generator Hujan Kosmik Konstan
         function createRainHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart-drop');
             heart.innerText = ['❤️', '💖', '✨', '💕'][Math.floor(Math.random() * 4)];
             heart.style.left = Math.random() * 98 + "vw";
-            heart.style.fontSize = Math.random() * 6 + 10 + "px";
-            heart.style.animationDuration = Math.random() * 4 + 4 + "s";
+            heart.style.fontSize = Math.random() * 6 + 11 + "px";
+            heart.style.animationDuration = Math.random() * 4 + 5 + "s";
             document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 8000);
+            setTimeout(() => { heart.remove(); }, 9000);
         }
-        setInterval(createRainHeart, 700);
+        setInterval(createRainHeart, 650);
     </script>
 </body>
 </html>
