@@ -3,151 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Delivery for My Favorite Person 💌</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>A Serenade for My Favorite Person 💌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #09090b;
-            --card-bg: rgba(24, 24, 27, 0.65);
-            --spotify-green: #1ed760;
-            --text-color: #f4f4f5;
-            --text-muted: #a1a1aa;
-            --accent-pink: #fda4af;
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --bg-color: #07070a;
+            --card-bg: rgba(18, 18, 22, 0.45);
+            --spotify-green: #1db954;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-pink: #f43f5e;
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --glow-color: rgba(30, 185, 84, 0.15);
         }
 
         * {
             box-sizing: border-box;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin: 0;
+            padding: 0;
         }
 
         body {
             background-color: var(--bg-color);
             background-image: 
-                radial-gradient(at 0% 0%, rgba(30, 215, 96, 0.08) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(253, 164, 175, 0.05) 0px, transparent 50%);
+                radial-gradient(at 5vw 10vh, rgba(29, 185, 84, 0.06) 0px, transparent 40vw),
+                radial-gradient(at 95vw 85vh, rgba(244, 63, 94, 0.05) 0px, transparent 40vw);
+            background-attachment: fixed;
             color: var(--text-color);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             position: relative;
+            line-height: 1.5;
         }
 
-        /* Kelopak Hati Estetik */
+        /* Partikel Latar Belakang yang Elegan */
         .heart-drop {
             position: fixed;
-            top: -10%;
+            top: -5%;
             pointer-events: none;
             z-index: 999;
-            opacity: 0.8;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+            opacity: 0;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
             animation: fall linear infinite;
         }
 
         @keyframes fall {
-            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(110vh) rotate(360deg) scale(1.2); opacity: 0; }
+            0% { transform: translateY(0) rotate(0deg) scale(0.6); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(105vh) rotate(360deg) scale(1); opacity: 0; }
         }
 
         .container {
-            max-width: 540px;
-            width: 92%;
-            margin: 60px auto;
+            max-width: 500px;
+            width: 90%;
+            margin: 100px auto;
             text-align: center;
         }
 
-        /* Header Mewah */
+        /* Header Eksklusif */
         h1 {
-            font-size: 2rem;
+            font-size: 1.85rem;
             font-weight: 800;
-            letter-spacing: -0.05em;
-            background: linear-gradient(135deg, #ffffff 40%, var(--spotify-green) 100%);
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #ffffff 20%, #cbd5e1 60%, var(--spotify-green) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-            line-height: 1.2;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .typewriter-container {
+            min-height: 28px;
+            margin-bottom: 50px;
         }
 
         .subtitle {
-            font-size: 0.95rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.05rem;
             color: var(--text-muted);
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-
-        /* Spotify Player Premium */
-        .spotify-player {
-            background: rgba(18, 18, 18, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 24px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-            position: relative;
+            display: inline-block;
+            border-right: 1.5px solid var(--spotify-green);
+            white-space: nowrap;
             overflow: hidden;
+            padding-right: 4px;
         }
 
-        .spotify-player::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--spotify-green), transparent);
+        /* Spotify Player V3 */
+        .spotify-player {
+            background: rgba(13, 13, 16, 0.75);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            padding: 24px;
+            border-radius: 24px;
+            margin-bottom: 50px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+            text-align: left;
+        }
+
+        .player-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
         }
 
         .player-info {
             display: flex;
             align-items: center;
-            width: 100%;
-            margin-bottom: 20px;
-            text-align: left;
         }
 
         .album-art {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, #27272a, #09090b);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1e1e24, #09090b);
             border-radius: 12px;
             margin-right: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-            position: relative;
+            font-size: 26px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .album-art.playing {
-            animation: pulseArt 2s infinite ease-in-out;
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(29, 185, 84, 0.2);
         }
 
-        @keyframes pulseArt {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); box-shadow: 0 8px 20px rgba(30, 215, 96, 0.3); }
-        }
-
-        .track-details .track-title {
-            font-size: 1.15rem;
+        .track-title {
+            font-size: 1.1rem;
             font-weight: 700;
             color: #ffffff;
-            margin: 0 0 4px 0;
-            letter-spacing: -0.02em;
+            margin-bottom: 2px;
+            letter-spacing: -0.01em;
         }
 
-        .track-details .track-artist {
-            font-size: 0.9rem;
+        .track-artist {
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin: 0;
         }
 
-        /* Progress Bar Baru */
+        /* Mini Visualizer */
+        .visualizer {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 20px;
+            padding-right: 5px;
+        }
+
+        .bar {
+            width: 3px;
+            height: 3px;
+            background-color: var(--spotify-green);
+            border-radius: 2px;
+            transition: height 0.3s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { height: 4px; }
+            50% { height: 18px; }
+        }
+
+        .visualizer.active .bar:nth-child(1) { animation: bounce 0.8s infinite 0.1s; }
+        .visualizer.active .bar:nth-child(2) { animation: bounce 1.1s infinite 0.4s; }
+        .visualizer.active .bar:nth-child(3) { animation: bounce 0.9s infinite 0.2s; }
+
         .progress-container {
             width: 100%;
             margin-bottom: 20px;
@@ -156,7 +181,7 @@
         .progress-bar {
             width: 100%;
             height: 4px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.06);
             border-radius: 2px;
             cursor: pointer;
             position: relative;
@@ -165,7 +190,7 @@
         .progress-filled {
             width: 0%;
             height: 100%;
-            background: var(--spotify-green);
+            background: linear-gradient(90deg, var(--spotify-green), #34d399);
             border-radius: 2px;
             position: absolute;
             top: 0; left: 0;
@@ -177,129 +202,149 @@
             font-size: 0.75rem;
             color: var(--text-muted);
             margin-top: 6px;
+            font-weight: 500;
         }
 
-        /* Kontrol Tombol Putar */
         .controls-wrapper {
-            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .play-btn {
             background-color: #ffffff;
             color: #000000;
             border: none;
-            padding: 14px 36px;
-            border-radius: 30px;
+            padding: 12px 36px;
+            border-radius: 25px;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin: 0 auto;
         }
 
         .play-btn:hover {
-            transform: scale(1.04);
+            transform: translateY(-2px) scale(1.03);
             background-color: var(--spotify-green);
+            box-shadow: 0 10px 25px rgba(29, 185, 84, 0.25);
         }
 
         .play-notice {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            margin: 14px 0 0 0;
-            font-weight: 500;
+            font-weight: 400;
         }
 
-        /* Kartu Foto Efek Glassmorphism Premium */
+        /* Kartu Cerita Premium & Animasi Lembut */
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 24px;
-            padding: 24px;
-            margin-bottom: 30px;
+            padding: 22px;
+            margin-bottom: 35px;
             border: 1px solid var(--glass-border);
             text-align: left;
             opacity: 0;
             transform: translateY(30px);
+            filter: blur(4px);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        opacity 0.6s ease, 
+                        filter 0.6s ease,
+                        box-shadow 0.4s ease,
+                        border-color 0.4s ease;
         }
 
-        /* Kelas pemicu scroll halus */
         .card.revealed {
             opacity: 1;
             transform: translateY(0);
+            filter: blur(0);
+        }
+
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 30px var(--glow-color);
         }
 
         .card .img-wrapper {
             width: 100%;
             border-radius: 16px;
             overflow: hidden;
-            margin-bottom: 18px;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.5);
-            background: #18181b;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            background: #0f0f13;
         }
 
         .card img {
             width: 100%;
             height: auto;
             display: block;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .card:hover img {
-            transform: scale(1.03);
+        .card:hover .img-wrapper img {
+            transform: scale(1.025);
         }
 
         .card p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin: 0;
-            color: #d4d4d8;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: #cbd5e1;
+            font-weight: 400;
         }
 
         .card p strong {
             color: #ffffff;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 700;
             display: inline-block;
             margin-bottom: 6px;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
         }
 
-        /* Grid Layout Profesional */
+        /* Tata Letak Grid Galeri */
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             opacity: 0;
             transform: translateY(30px);
+            filter: blur(4px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .grid-container.revealed {
             opacity: 1;
             transform: translateY(0);
+            filter: blur(0);
         }
 
         .grid-title {
             color: #ffffff;
             grid-column: span 2;
-            font-size: 1.3rem;
-            margin-bottom: 4px;
+            font-size: 1.25rem;
+            margin-bottom: 2px;
             font-weight: 700;
             text-align: left;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
         }
 
         .grid-card {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 20px;
-            padding: 10px;
+            padding: 8px;
             border: 1px solid var(--glass-border);
             overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .grid-card img {
@@ -307,17 +352,78 @@
             height: auto;
             border-radius: 14px;
             display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        .grid-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
         .grid-card:hover img {
-            transform: scale(1.04);
+            transform: scale(1.03);
         }
 
-        /* Kartu Penutup Spesial */
-        .footer-card {
-            border: 1px solid rgba(253, 164, 175, 0.2);
-            background: linear-gradient(180deg, rgba(24, 24, 27, 0.7) 0%, rgba(9, 9, 11, 0.9) 100%);
-            box-shadow: 0 15px 30px rgba(253, 164, 175, 0.05);
+        /* Bagian Surat Rahasia Legendaris */
+        .secret-section {
+            margin: 60px 0 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .heart-trigger-btn {
+            background: none;
+            border: none;
+            font-size: 50px;
+            cursor: pointer;
+            animation: heartbeat 1.5s infinite ease-in-out;
+            outline: none;
+            filter: drop-shadow(0 0 15px rgba(244, 63, 94, 0.4));
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.12); }
+            35% { transform: scale(1.05); }
+            55% { transform: scale(1.15); }
+        }
+
+        .trigger-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 16px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .hidden-letter {
+            display: none;
+            background: linear-gradient(150deg, rgba(20, 15, 18, 0.95), rgba(10, 10, 14, 0.95));
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            box-shadow: 0 40px 80px rgba(244, 63, 94, 0.06);
+            transform: scale(0.95);
+            opacity: 0;
+        }
+
+        .hidden-letter.letter-open {
+            display: block;
+            animation: openLetter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes openLetter {
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .letter-text {
+            font-size: 0.92rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            text-align: left;
+            white-space: pre-line;
+            font-weight: 400;
         }
     </style>
 </head>
@@ -325,22 +431,31 @@
 
     <div class="container">
         <h1>Special Delivery for My Favorite Person 💌</h1>
-        <p class="subtitle">From Putra khusus buat kamu yang paling cantik ✨</p>
+        <div class="typewriter-container">
+            <p class="subtitle" id="typewriterText"></p>
+        </div>
         
         <audio id="myAudio" loop preload="auto">
             <source src="lagu.mpeg" type="audio/mpeg">
         </audio>
 
         <div class="spotify-player">
-            <div class="player-info">
-                <div class="album-art" id="albumArt">🎵</div>
-                <div class="track-details">
-                    <p class="track-title">Perfect</p>
-                    <p class="track-artist">Ed Sheeran</p>
+            <div class="player-header">
+                <div class="player-info">
+                    <div class="album-art" id="albumArt">🎵</div>
+                    <div>
+                        <p class="track-title">Perfect</p>
+                        <p class="track-artist">Ed Sheeran</p>
+                    </div>
+                </div>
+                <div class="visualizer" id="visualizer">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
                 </div>
             </div>
             
-            <div class="progress-container" onclick="setSpeed(event)">
+            <div class="progress-container" onclick="seekAudio(event)">
                 <div class="progress-bar">
                     <div class="progress-filled" id="progressFilled"></div>
                 </div>
@@ -354,23 +469,23 @@
                 <button class="play-btn" id="playBtn" onclick="togglePlay()">
                     <span>▶ Putar Musik</span>
                 </button>
-                <p class="play-notice" id="statusNotice">Klik tombol di atas untuk dengerin musiknya ya Cantikkk 💚</p>
+                <p class="play-notice" id="statusNotice">Nyalakan musik untuk menyempurnakan suasana 💚</p>
             </div>
         </div>
 
         <div class="card">
             <div class="img-wrapper"><img src="image_fcfbc4.jpg.jpeg" alt="Cinema Date"></div>
-            <p><strong>Cinema Date Chronicles 🎬</strong><br>Inget gak waktu kita nonton ini? Salah satu momen favorit aku karena bisa duduk manis di sebelah kamu.</p>
+            <p><strong>Cinema Date Chronicles 🎬</strong><br>Sederhana, tapi waktu seolah berjalan lebih lambat hari itu. Duduk di sebelah kamu dan berbagi tawa di ruang gelap adalah salah satu momen yang selalu ingin aku ulang kembali.</p>
         </div>
 
         <div class="card">
             <div class="img-wrapper"><img src="image_fcfbbd.jpg.jpeg" alt="Night Out"></div>
-            <p><strong>Our Romantic Night-Out 🌙</strong><br>Mau sedalam apa pun malamnya, dunia terasa terang benderang tiap kali aku bareng kamu.</p>
+            <p><strong>Our Romantic Night-Out 🌙</strong><br>Malam boleh saja dingin dan jalanan terasa panjang, tapi bersamamu, sudut kota yang biasa pun berubah menjadi tempat paling hangat penuh cerita.</p>
         </div>
 
         <div class="card">
             <div class="img-wrapper"><img src="image_fcfbc0.jpg.jpeg" alt="Mirror Selfie"></div>
-            <p><strong>The Mirror Selfie 📸</strong><br>Gemes banget tiap liat foto ini. Biarpun kamunya malu-malu tutup muka, di mata aku kamu tetep yang paling mempesona!</p>
+            <p><strong>The Mirror Selfie 📸</strong><br>Momen kecil yang berhasil terekam. Meskipun kamu seringkali malu-malu di depan kamera, bagiku ekspresi spontan dan ketulusanmu di foto ini adalah definisi keindahan yang nyata.</p>
         </div>
 
         <div class="grid-container">
@@ -379,23 +494,43 @@
             <div class="grid-card"><img src="image_fcfbfb.jpg.jpeg" alt="Pose 2"></div>
             <div class="grid-card"><img src="image_fcfbfe.jpg.jpeg" alt="Pose 3"></div>
             <div class="grid-card"><img src="image_fcfc1b.jpg.jpeg" alt="Pose 4"></div>
-            <p style="grid-column: span 2; font-size: 0.9rem; color: var(--text-muted); margin-top: 8px; text-align: left;">Heran deh, mau pose cemberut atau pasang muka gimana juga herannya kok gak bosenin dan tetep lucu terus!</p>
+            <p style="grid-column: span 2; font-size: 0.88rem; color: var(--text-muted); margin-top: 10px; text-align: left;">Bagaimana bisa seseorang tetap terlihat begitu menggemaskan bahkan di saat sedang cemberut? Sisi kecil dari dirimu ini selalu sukses membuat aku tersenyum sendiri.</p>
         </div>
 
-        <div class="grid-container" style="margin-top: 40px;">
+        <div class="grid-container" style="margin-top: 45px;">
             <div class="grid-title" style="color: var(--accent-pink);">More of Your Beautiful Smiles ✨</div>
             <div class="grid-card"><img src="image_fcfc41.jpg.jpeg" alt="More 1"></div>
             <div class="grid-card"><img src="image_photo6.jpg.jpeg" alt="More 2"></div>
             <div class="grid-card"><img src="image_photo7.jpg.jpeg" alt="More 3"></div>
             <div class="grid-card"><img src="image_photo8.jpg.jpeg" alt="More 4"></div>
             <div class="grid-card" style="grid-column: span 2;"><img src="image_photo9.jpg.jpeg" alt="More 5"></div>
-            <p style="grid-column: span 2; font-size: 0.9rem; color: var(--text-muted); margin-top: 8px; text-align: left;">Nggak ada alasan khusus sih, cuma mau majang foto kamu lebih banyak aja karena ngeliat kamu senyum itu bikin hari-hari aku jadi jauh lebih baik.</p>
+            <p style="grid-column: span 2; font-size: 0.88rem; color: var(--text-muted); margin-top: 10px; text-align: left;">Senyumanmu memiliki caranya sendiri untuk meredakan badai dan mencerahkan hari-hari yang melelahkan. Menyimpan memori ini adalah caraku merawat bahagia.</p>
         </div>
 
-        <div class="card footer-card" style="margin-top: 40px;">
+        <div class="card" style="margin-top: 45px;">
             <div class="img-wrapper"><img src="image_fcfc77.jpg.jpeg" alt="Future Dream"></div>
-            <p><strong style="color: var(--accent-pink);">Impian Masa Depan Kita 🌸</strong></p>
-            <p style="margin-top: 8px;">Kayak dua anak kecil lucu yang bawa bunga ini, aku harap kita bisa terus gandengan tangan, melewati hari dengan tawa, dan tumbuh bersama sampai tua nanti. *I Love You So Much!* ❤️</p>
+            <p><strong style="color: var(--accent-pink);">Langkah Menuju Masa Depan 🌸</strong></p>
+            <p style="margin-top: 6px;">Layaknya dua anak kecil yang berjalan selaras membawa bunga, aku berharap kita bisa terus menggenggam jemari satu sama lain. Bertumbuh bersama, melewati setiap perubahan musim hidup, hingga hari tua nanti tiba.</p>
+        </div>
+
+        <div class="secret-section">
+            <button class="heart-trigger-btn" id="heartBtn" onclick="openSecretLetter()">❤️</button>
+            <p class="trigger-text" id="triggerText">Sentuh untuk membaca surat terbuka</p>
+            
+            <div class="card hidden-letter" id="secretLetterCard">
+                <p><strong style="color: var(--accent-pink); font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem;">A Letter of Sincerity... 🕊️</strong></p>
+                <div class="letter-text">
+                    Untukmu, seseorang yang kehadirannya selalu aku syukuri.
+
+                    Lewat ruang digital yang tenang ini, aku ingin menyampaikan sebentuk perasaan yang barangkali kerap luput terucap dalam riuhnya keseharian kita. 
+
+                    Setiap potret kenangan yang sengaja aku tata di atas bukan sekadar deretan file gambar biasa, melainkan representasi dari momen-momen paling berharga yang selalu aku jaga rapi di dalam hati. Terima kasih telah bersedia melangkah bersamaku, melengkapi kekuranganku dengan sabarmu, dan senantiasa menjadi alasan terbaikku untuk berjuang lebih baik setiap hari.
+
+                    Perasaanku padamu tumbuh secara sederhana namun mendalam, tanpa perlu banyak perayaan yang berlebihan. Tetaplah menjadi dirimu yang hangat, dan mari kita rajut lembaran cerita baru di hari-hari yang akan datang.
+                    
+                    — Dengan seluruh ketulusan, Putra.
+                </div>
+            </div>
         </div>
     </div>
 
@@ -407,27 +542,41 @@
         const currentTimeEl = document.getElementById('currentTime');
         const durationTimeEl = document.getElementById('durationTime');
         const albumArt = document.getElementById('albumArt');
+        const visualizer = document.getElementById('visualizer');
 
-        // Mengatur Fungsi Pemutar Musik & Update Progress Bar Resmi
+        // Dynamic Typewriter (Mulus & Natural)
+        const textTarget = "Sebuah ruang kecil untuk merayakan semua cerita indah tentang kita. ✨";
+        let textIndex = 0;
+        function typeWriter() {
+            if (textIndex < textTarget.length) {
+                document.getElementById("typewriterText").innerHTML += textTarget.charAt(textIndex);
+                textIndex++;
+                setTimeout(typeWriter, 70);
+            } else {
+                document.getElementById("typewriterText").style.borderRight = "none";
+            }
+        }
+        window.addEventListener('load', typeWriter);
+
+        // Music Controls & Visualizer Sync
         function togglePlay() {
             if (audio.paused) {
                 audio.play()
                 .then(() => {
                     playBtn.innerHTML = '<span>⏸ Jeda Musik</span>';
-                    playBtn.style.backgroundColor = '#ffffff';
-                    notice.innerText = 'Lagu Ed Sheeran - Perfect sedang diputar... 💖';
+                    notice.innerText = 'Ed Sheeran — Perfect sedang menemani harimu... 💖';
                     albumArt.classList.add('playing');
+                    visualizer.classList.add('active');
                 })
-                .catch(error => {
-                    audio.load();
-                    audio.play();
+                .catch(() => {
+                    audio.load(); audio.play();
                 });
             } else {
                 audio.pause();
                 playBtn.innerHTML = '<span>▶ Putar Musik</span>';
-                playBtn.style.backgroundColor = '#ffffff';
                 notice.innerText = 'Musik dijeda 💚';
                 albumArt.classList.remove('playing');
+                visualizer.classList.remove('active');
             }
         }
 
@@ -441,65 +590,103 @@
             const percentage = (audio.currentTime / audio.duration) * 100;
             progressFilled.style.width = `${percentage}%`;
             currentTimeEl.innerText = formatTime(audio.currentTime);
-            if(audio.duration) {
-                durationTimeEl.innerText = formatTime(audio.duration);
-            }
+            if(audio.duration) durationTimeEl.innerText = formatTime(audio.duration);
         });
 
-        function setSpeed(e) {
+        function seekAudio(e) {
             const width = e.currentTarget.clientWidth;
             const clickX = e.offsetX;
-            const duration = audio.duration;
-            if(duration) {
-                audio.currentTime = (clickX / width) * duration;
+            if(audio.duration) audio.currentTime = (clickX / width) * audio.duration;
+        }
+
+        // Secret Letter & Particle Explosion
+        function openSecretLetter() {
+            const letter = document.getElementById('secretLetterCard');
+            const heartBtn = document.getElementById('heartBtn');
+            const triggerText = document.getElementById('triggerText');
+            
+            // Ledakan partikel halus sebaran cinta
+            const rect = heartBtn.getBoundingClientRect();
+            for(let i=0; i<20; i++) {
+                createExplosionHeart(rect.left + rect.width/2, rect.top + rect.height/2);
             }
+
+            heartBtn.style.transform = "scale(0)";
+            setTimeout(() => {
+                heartBtn.style.display = "none";
+                triggerText.style.display = "none";
+                letter.classList.add('letter-open');
+                setTimeout(() => {
+                    letter.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 200);
+            }, 300);
         }
 
-        // Fungsi Animasi Reveal Scroll Halus ala Aplikasi Profesional
-        const scrollElements = document.querySelectorAll('.card, .grid-container');
+        function createExplosionHeart(x, y) {
+            const p = document.createElement('div');
+            p.innerText = ['❤️', '💖', '✨', '💕'][Math.floor(Math.random() * 4)];
+            p.style.position = 'fixed';
+            p.style.left = x + 'px';
+            p.style.top = y + 'px';
+            p.style.pointerEvents = 'none';
+            p.style.zIndex = '1000';
+            p.style.fontSize = Math.random() * 8 + 12 + 'px';
+            document.body.appendChild(p);
 
-        const elementInView = (el, dividend = 1) => {
-            const elementTop = el.getBoundingClientRect().top;
-            return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend);
-        };
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 5 + 3;
+            let posX = x; let posY = y;
+            let opacity = 1;
 
-        const displayScrollElement = (element) => {
-            element.classList.add('revealed');
-        };
-
-        const handleScrollAnimation = () => {
-            scrollElements.forEach((el) => {
-                if (elementInView(el, 1.15)) {
-                    displayScrollElement(el);
+            const interval = setInterval(() => {
+                posX += Math.cos(angle) * velocity;
+                posY += Math.sin(angle) * velocity + 0.5;
+                opacity -= 0.03;
+                p.style.left = posX + 'px';
+                p.style.top = posY + 'px';
+                p.style.opacity = opacity;
+                if(opacity <= 0) {
+                    clearInterval(interval); p.remove();
                 }
-            })
+            }, 16);
         }
 
-        window.addEventListener('scroll', () => { 
-            handleScrollAnimation();
-        });
-        
-        // Pemicu awal agar bagian atas langsung termuat
-        window.addEventListener('load', () => {
-            handleScrollAnimation();
-        });
+        // Modern Smooth Scroll Reveal (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
 
-        // Efek Partikel Hati Halus Teroptimasi
-        function createHeart() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    // Mengatur perubahan warna ambient glow dinamis berdasarkan elemen terdekat
+                    if(entry.target.classList.contains('footer-card') || entry.target.innerHTML.includes('Smiles')) {
+                        document.documentElement.style.setProperty('--glow-color', 'rgba(244, 63, 94, 0.08)');
+                    } else {
+                        document.documentElement.style.setProperty('--glow-color', 'rgba(29, 185, 84, 0.12)');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .grid-container').forEach(el => observer.observe(el));
+
+        // Elegant Heart Fall Rain Effect
+        function createRainHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart-drop');
-            const hearts = ['❤️', '💖', '🌸', '✨', '💕'];
-            heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-            heart.style.left = Math.random() * 100 + "vw";
-            
-            const size = Math.random() * 12 + 12;
+            heart.innerText = ['❤️', '💖', '✨', '💕'][Math.floor(Math.random() * 4)];
+            heart.style.left = Math.random() * 98 + "vw";
+            const size = Math.random() * 8 + 10;
             heart.style.fontSize = size + "px";
-            
-            heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+            heart.style.animationDuration = Math.random() * 4 + 4 + "s";
             document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 6000);
+            setTimeout(() => { heart.remove(); }, 8000);
         }
-        setInterval(createHeart, 450);
+        setInterval(createRainHeart, 600);
     </script>
 </body>
 </html>
