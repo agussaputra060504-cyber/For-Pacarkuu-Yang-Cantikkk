@@ -223,9 +223,9 @@
             </div>
             
             <div class="controls-wrapper">
-                <!-- File audio internal -->
+                <!-- MENGGUNAKAN SOURCE LINK STREAMING GLOBAL YANG PASTI BUNYI -->
                 <audio id="myAudio" loop preload="auto">
-                    <source src="musik.mp3" type="audio/mpeg">
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
                 </audio>
                 <button class="play-btn" id="playBtn" onclick="togglePlay()">
                     <span>▶ Putar Musik</span>
@@ -313,7 +313,6 @@
                     notice.innerText = 'Lagu Ed Sheeran - Perfect sedang diputar... 💖';
                 })
                 .catch(error => {
-                    // Coba trigger play manual sekali lagi jika browser memblokir interaksi awal
                     audio.load();
                     audio.play();
                     playBtn.innerHTML = '<span>⏸ Jeda Musik</span>';
