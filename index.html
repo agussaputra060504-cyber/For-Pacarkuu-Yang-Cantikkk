@@ -128,8 +128,10 @@
         }
         .card img {
             width: 100%;
+            height: auto; /* Memastikan gambar tampil utuh tidak terpotong */
             border-radius: 8px;
             margin-bottom: 15px;
+            display: block;
         }
         .card p {
             font-size: 1rem;
@@ -159,9 +161,9 @@
         }
         .grid-card img {
             width: 100%;
+            height: auto; /* Memastikan gambar grid juga tampil utuh */
             border-radius: 8px;
-            aspect-ratio: 3/4;
-            object-fit: cover;
+            display: block;
         }
         .grid-title {
             color: var(--spotify-green);
@@ -193,9 +195,9 @@
                 </div>
             </div>
             
+            <!-- Menggunakan link audio alternatif yang mendukung pemutaran langsung di browser / GitHub Pages -->
             <audio controls loop style="width: 100%;">
-                <!-- Menggunakan stream audio direct berkualitas tinggi dari arsip tepercaya -->
-                <source src="https://archive.org/download/stephen-sanchez-until-i-found-you/Stephen%20Sanchez%20-%20Until%20I%20Found%20You.mp3" type="audio/mpeg">
+                <source src="https://pub-c5e31b5cdafb419a91624d10244275de.r2.dev/Stephen_Sanchez_-_Until_I_Found_You.mp3" type="audio/mpeg">
                 Browser kamu tidak mendukung pemutar musik otomatis.
             </audio>
             
@@ -253,8 +255,8 @@
             <div class="grid-card">
                 <img src="image_photo8.jpg.jpeg" alt="More 4">
             </div>
-            <div class="grid-card" style="grid-column: span 2; aspect-ratio: unset;">
-                <img src="image_photo9.jpg.jpeg" alt="More 5" style="aspect-ratio: unset; max-height: 400px; object-fit: cover;">
+            <div class="grid-card" style="grid-column: span 2;">
+                <img src="image_photo9.jpg.jpeg" alt="More 5">
             </div>
             <p style="grid-column: span 2; font-size: 0.95rem; color: var(--text-muted); margin: 5px 0 0 0; text-align: left;">Nggak ada alasan khusus sih, cuma mau majang foto kamu lebih banyak aja karena ngeliat kamu senyum itu bikin hari-hari aku jadi jauh lebih baik.</p>
         </div>
